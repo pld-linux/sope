@@ -1,4 +1,4 @@
-# sRevision: 1.4 $, $Date: 2004-11-21 08:54:17 $
+# sRevision: 1.4 $, $Date: 2004-11-21 21:08:17 $
 Summary:	WebObjects 4.x compatible library with extensions
 Summary(pl):	Biblioteka kompatybilna z WebObjects 4.x
 Name:		sope
@@ -44,6 +44,22 @@ Header files for sope library.
 %description devel -l pl
 Pliki nag³ówkowe biblioteki sope.
 
+%package EOF
+Summary:	Enterprise Objects Framework
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description EOF
+Enterprise Objects Framework.
+
+%package EOF-devel
+Summary:	Headers for Enterprise Objects Framework
+Group:		Development/Libraries
+Requires:	%{name}-EOF = %{version}-%{release}
+
+%description EOF-devel
+Headers for Enterprise Objects Framework.
+
 %prep
 %setup -q -n %{name}
 
@@ -83,7 +99,21 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_prefix}/System/Library/Libraries/%{gscpu}
 %dir %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}
 %dir %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/lib*.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libDOM.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libGDLAccess.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGExtensions.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGiCal.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGLdap.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGMime.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGObjWeb.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGStreams.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGXmlRpc.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libSaxObjC.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libSoOFS.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWEExtensions.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWOExtensions.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWOXML.so.*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libXmlRpc.so.*
 %dir %{_prefix}/System/Library/SaxDrivers-4.3
 %dir %{_prefix}/System/Library/SaxDrivers-4.3/*.sax/
 %{_prefix}/System/Library/SaxDrivers-4.3/*.sax/*.plist
@@ -118,6 +148,29 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files devel
-%{_prefix}/System/Library/Headers/%{libcombo}/*
 %{_prefix}/System/Library/Makefiles/Additional/*.make
 %{_prefix}/System/Library/Makefiles/*.make
+%{_prefix}/System/Library/Headers/%{libcombo}/DOM/
+%{_prefix}/System/Library/Headers/%{libcombo}/GDLAccess/
+%{_prefix}/System/Library/Headers/%{libcombo}/NGExtensions/
+%{_prefix}/System/Library/Headers/%{libcombo}/NGHttp/
+%{_prefix}/System/Library/Headers/%{libcombo}/NGiCal/
+%{_prefix}/System/Library/Headers/%{libcombo}/NGImap4/
+%{_prefix}/System/Library/Headers/%{libcombo}/NGLdap/
+%{_prefix}/System/Library/Headers/%{libcombo}/NGMail/
+%{_prefix}/System/Library/Headers/%{libcombo}/NGMime/
+%{_prefix}/System/Library/Headers/%{libcombo}/NGObjWeb/
+%{_prefix}/System/Library/Headers/%{libcombo}/NGStreams/
+%{_prefix}/System/Library/Headers/%{libcombo}/NGXmlRpc/
+%{_prefix}/System/Library/Headers/%{libcombo}/SaxObjC/
+%{_prefix}/System/Library/Headers/%{libcombo}/SoOFS/
+%{_prefix}/System/Library/Headers/%{libcombo}/WEExtensions/
+%{_prefix}/System/Library/Headers/%{libcombo}/WOExtensions/
+%{_prefix}/System/Library/Headers/%{libcombo}/WOXML/
+%{_prefix}/System/Library/Headers/%{libcombo}/XmlRpc/
+
+%files EOF
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libEO*.so.*
+
+%files EOF-devel
+%{_prefix}/System/Library/Headers/%{libcombo}/EOControl
