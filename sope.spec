@@ -1,4 +1,4 @@
-# sRevision: 1.4 $, $Date: 2004-11-22 07:47:28 $
+# sRevision: 1.4 $, $Date: 2004-12-06 23:01:33 $
 Summary:	SKYRiX Object Publishing Environment
 Summary(pl):	SKYRiX Object Publishing Environment - ¶rodowisko do publikowania obiektów
 Name:		sope
@@ -13,6 +13,8 @@ URL:		http://sope.opengroupware.org/
 BuildRequires:	gnustep-db-devel
 BuildRequires:	gnustep-base-devel
 BuildRequires:	libxml2-devel
+BuildRequires:	openldap-devel
+BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
