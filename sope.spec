@@ -2,8 +2,8 @@
 %define		__source	.
 %define		sope_makeflags	-w -s debug=yes strip=yes
 
-Summary:     SKYRiX Object Publishing Environment
-Summary(pl): SKYRiX Object Publishing Environment - ¶rodowisko do publikowania obiektów
+Summary:	SKYRiX Object Publishing Environment
+Summary(pl):	SKYRiX Object Publishing Environment - ¶rodowisko do publikowania obiektów
 Name:		sope
 Version:	4.5
 Release:	8.0
