@@ -2,8 +2,8 @@
 %define		__source	.
 %define		sope_makeflags	-w -s debug=yes strip=yes
 
-Summary:	SOPE
-Summary(pl):	SOPE
+Summary:     SKYRiX Object Publishing Environment
+Summary(pl): SKYRiX Object Publishing Environment - ¶rodowisko do publikowania obiektów
 Name:		sope
 Version:	4.5
 Release:	8.0
@@ -72,10 +72,23 @@ BuildRequires:	libtool >= 1.5.10
 Requires(post,postun):	/sbin/ldconfig
 
 %description
-sope
+The SOPE package is an extensive set of frameworks (16 frameworks,
+~1500 classes) which form a complete Web application server
+environment. Besides the Apple WebObjects compatible appserver
+extended with Zope concepts, it contains a large set of reusable
+classes: XML processing (SAX2, DOM, XML-RPC), MIME/IMAP4 processing,
+LDAP connectivity, RDBMS connectivity, and iCalendar parsing.
+The individual frameworks of the package can be used standalone (for
+example in Cocoa applications) and do not require the application
+server itself.
 %description -l pl
-sope
-
+Pakiet SOPE to obszerny zestaw szkieletów (16 szkieletów, ~1500 klas)
+tworz±cych kompletne ¶rodowisko serwera aplikacji WWW. Oprócz serwera
+aplikacji zgodnego z Apple WebObjects rozszerzonego przez idee Zope
+zawiera du¿y zbiór klas wielokrotnego u¿ycia do: przetwarzania XML
+(SAX2, DOM, XML-RPC), przetwarzania MIME/IMAP4, ³±czno¶ci z LDAP,
+³±czno¶ci z serwerami relacyjnych baz danych oraz przetwarzania
+formatu iCalendar.
 
 %package xml
 Summary:	sope-xml
