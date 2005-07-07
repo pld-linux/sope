@@ -1,16 +1,18 @@
 # TODO: descs for subpackages
-
+%define		trunkdate	200507061800
 %define		sope_makeflags	-w -s debug=yes strip=no
+%define		versionalpha	r868
 
 Summary:	SKYRiX Object Publishing Environment
 Summary(pl):	SKYRiX Object Publishing Environment - ¶rodowisko do publikowania obiektów
 Name:		sope
 Version:	4.5
-Release:	8.0
+Release:	0.1
 Vendor:		http://www.opengroupware.org/
 License:	GPL
 Group:		Development/Libraries
-Source0:	http://download.opengroupware.org/sources/trunk/%{name}-trunk-latest.tar.gz
+Source0:	http://download.opengroupware.org/sources/trunk/%{name}-trunk-%{versionalpha}-%{trunkdate}.tar.gz
+# Source0-md5:	c22e4626419619e7c76c9c7640fce7ca
 URL:		http://www.opengroupware.org/
 #AutoReqProv:	off
 BuildRequires:	STLport-devel >= 4.6.2
