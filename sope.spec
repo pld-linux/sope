@@ -1,7 +1,7 @@
 # TODO: descs for subpackages
-%define		trunkdate	200507061800
+%define		trunkdate	200508311700
 %define		sope_makeflags	-w -s debug=yes strip=no
-%define		versionalpha	r868
+%define		versionalpha	r1098
 
 Summary:	SKYRiX Object Publishing Environment
 Summary(pl):	SKYRiX Object Publishing Environment - ¶rodowisko do publikowania obiektów
@@ -12,9 +12,8 @@ Vendor:		http://www.opengroupware.org/
 License:	GPL
 Group:		Development/Libraries
 Source0:	http://download.opengroupware.org/sources/trunk/%{name}-trunk-%{versionalpha}-%{trunkdate}.tar.gz
-# Source0-md5:	c22e4626419619e7c76c9c7640fce7ca
+# Source0-md5:	22bf6213e39fdc8bdeaede293e419cfd
 URL:		http://www.opengroupware.org/
-#AutoReqProv:	off
 BuildRequires:	STLport-devel >= 4.6.2
 BuildRequires:	apache-devel >= 2.0.50
 BuildRequires:	autoconf
@@ -56,6 +55,18 @@ Requires:	postgresql >= 7.2.0
 Requires:	zlib >= 1.1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define         _prefix         /usr/%{_lib}/GNUstep
+
+%define		libcombo	gnu-gnu-gnu
+%define		gsos		linux-gnu
+%ifarch %{ix86}
+%define		gscpu		ix86
+%else
+# also s/alpha.*/alpha/, but we use only "alpha" arch for now
+%define		gscpu		%(echo %{_target_cpu} | sed -e 's/amd64/x86_64/;s/ppc/powerpc/')
+%endif
+
+
 %description
 The SOPE package is an extensive set of frameworks (16 frameworks,
 ~1500 classes) which form a complete Web application server
@@ -79,8 +90,6 @@ formatu iCalendar.
 %package xml
 Summary:	sope-xml
 Group:		Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description xml
 sope-xml
@@ -88,8 +97,6 @@ sope-xml
 %package xml-devel
 Summary:	sope-xml devel
 Group:		Development/Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description xml-devel
 sope-xml devel package.
@@ -97,8 +104,6 @@ sope-xml devel package.
 %package xml-tools
 Summary:	sope-xml tools
 Group:		Development/Tools
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description xml-tools
 sope-xml tools package.
@@ -106,8 +111,6 @@ sope-xml tools package.
 %package core
 Summary:	sope-core
 Group:		Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description core
 sope-core
@@ -115,8 +118,6 @@ sope-core
 %package core-devel
 Summary:	sope-core devel
 Group:		Development/Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description core-devel
 sope-core devel package.
@@ -124,8 +125,6 @@ sope-core devel package.
 %package mime
 Summary:	sope-mime
 Group:		Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description mime
 sope-mime
@@ -133,8 +132,6 @@ sope-mime
 %package mime-devel
 Summary:	sope-mime devel
 Group:		Development/Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description mime-devel
 sope-mime devel package.
@@ -142,8 +139,6 @@ sope-mime devel package.
 %package appserver
 Summary:	sope-appserver
 Group:		Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description appserver
 sope-appserver
@@ -151,8 +146,6 @@ sope-appserver
 %package appserver-devel
 Summary:	sope-appserver devel
 Group:		Development/Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description appserver-devel
 sope-appserver devel package.
@@ -160,8 +153,6 @@ sope-appserver devel package.
 %package appserver-tools
 Summary:	sope-appserver tools
 Group:		Development/Tools
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description appserver-tools
 sope-appserver tools package.
@@ -169,8 +160,6 @@ sope-appserver tools package.
 %package ldap
 Summary:	sope-ldap
 Group:		Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description ldap
 sope-ldap
@@ -178,8 +167,6 @@ sope-ldap
 %package ldap-devel
 Summary:	sope-ldap devel
 Group:		Development/Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description ldap-devel
 sope-ldap devel package.
@@ -187,8 +174,6 @@ sope-ldap devel package.
 %package ldap-tools
 Summary:	sope-ldap tools
 Group:		Development/Tools
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description ldap-tools
 sope-ldap tools package.
@@ -196,8 +181,6 @@ sope-ldap tools package.
 %package ical
 Summary:	sope-ical
 Group:		Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description ical
 sope-ical
@@ -205,8 +188,6 @@ sope-ical
 %package ical-devel
 Summary:	sope-ical devel
 Group:		Development/Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description ical-devel
 sope-ical devel package.
@@ -214,8 +195,6 @@ sope-ical devel package.
 %package gdl1
 Summary:	sope-gdl1
 Group:		Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description gdl1
 sope-gdl1
@@ -223,8 +202,6 @@ sope-gdl1
 %package gdl1-postgresql
 Summary:	sope-gdl1-postgresql
 Group:		Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description gdl1-postgresql
 sope-gdl1-postgresql
@@ -232,34 +209,55 @@ sope-gdl1-postgresql
 %package gdl1-devel
 Summary:	sope-gdl1 devel
 Group:		Development/Libraries
-#Requires:	gnustep-make
-#AutoReqProv:	off
 
 %description gdl1-devel
 sope-gdl1 devel package.
 
+%package EOF
+Summary:	Enterprise Objects Framework
+Summary(pl):	Szkielet Enterprise Objects Framework
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description EOF
+Enterprise Objects Framework.
+
+%description EOF -l pl
+Szkielet Enterprise Objects Framework.
+
+%package EOF-devel
+Summary:	Headers for Enterprise Objects Framework
+Summary(pl):	Pliki nag³ówkowe dla szkieletu Enterprise Objects Framework
+Group:		Development/Libraries
+Requires:	%{name}-EOF = %{version}-%{release}
+
+%description EOF-devel
+Headers for Enterprise Objects Framework.
+
+%description EOF-devel -l pl
+Pliki nag³ówkowe dla szkieletu Enterprise Objects Framework.
+
 %prep
-%setup -q -n sope
+%setup -q -n %{name}
 
 %build
-. %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
-%{__make} %{sope_makeflags} \
+. %{_prefix}/System/Library/Makefiles/GNUstep.sh
+%{__make} \
 	OPTFLAG="%{rpmcflags}" \
 	messages=yes
 
 %install
 rm -rf $RPM_BUILD_ROOT
-. %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
-install -d $RPM_BUILD_ROOT%{_libdir}
-%{__make} %{sope_makeflags} install \
-	INSTALL_ROOT_DIR=$RPM_BUILD_ROOT \
-	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_prefix} \
-	FHS_INSTALL_ROOT=$RPM_BUILD_ROOT%{_prefix}
+. %{_prefix}/System/Library/Makefiles/GNUstep.sh
 
-rm -f $RPM_BUILD_ROOT%{_bindir}/rss2plist1
-rm -f $RPM_BUILD_ROOT%{_bindir}/rss2plist2
-rm -f $RPM_BUILD_ROOT%{_bindir}/rssparse
-rm -f $RPM_BUILD_ROOT%{_bindir}/testqp
+%{__make} install \
+	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_prefix}/System \
+	INSTALL_ROOT_DIR=$RPM_BUILD_ROOT
+
+rm -f ${RPM_BUILD_ROOT}%{prefix}/bin/rss2plist1
+rm -f ${RPM_BUILD_ROOT}%{prefix}/bin/rss2plist2
+rm -f ${RPM_BUILD_ROOT}%{prefix}/bin/rssparse
+rm -f ${RPM_BUILD_ROOT}%{prefix}/bin/testqp
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -285,139 +283,195 @@ rm -rf $RPM_BUILD_ROOT
 %post	gdl1 -p /sbin/ldconfig
 %postun	gdl1 -p /sbin/ldconfig
 
+%post	EOF -p /sbin/ldconfig
+%postun	EOF -p /sbin/ldconfig
+
+
 %files xml
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libDOM*.so.%{version}*
-%attr(755,root,root) %{_libdir}/libSaxObjC*.so.%{version}*
-%attr(755,root,root) %{_libdir}/libXmlRpc*.so.%{version}*
-# XXX: missing %{_libdir}/sope-%{version} dir
-%dir %{_libdir}/sope-%{version}/saxdrivers
-%{_libdir}/sope-%{version}/saxdrivers/libxmlSAXDriver.sax
-%{_libdir}/sope-%{version}/saxdrivers/STXSaxDriver.sax
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libDOM*.so.%{version}*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libSaxObjC*.so.%{version}*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libXmlRpc*.so.%{version}*
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/%{gscpu}
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/%{gscpu}/%{gsos}
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/%{gscpu}/%{gsos}/%{libcombo}
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/%{gscpu}
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/%{gscpu}/%{gsos}
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/%{gscpu}/%{gsos}/%{libcombo}
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/Resources
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/Resources
+%attr(755,root,root) %{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/%{gscpu}/%{gsos}/%{libcombo}/*
+%attr(755,root,root) %{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/%{gscpu}/%{gsos}/%{libcombo}/*
+%{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/*.plist
+%{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/Resources/*.plist
+%{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/Resources/*.plist
+%{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/*.plist
+%{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/Resources/Version
+%{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/Resources/Version
+%{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/stamp.make
+%{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/stamp.make
 
 %files xml-tools
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/domxml
-%attr(755,root,root) %{_bindir}/saxxml
-%attr(755,root,root) %{_bindir}/xmln
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/domxml
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/saxxml
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/xmln
 
 %files xml-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libDOM*.so
-%attr(755,root,root) %{_libdir}/libSaxObjC*.so
-%attr(755,root,root) %{_libdir}/libXmlRpc*.so
-%{_includedir}/DOM
-%{_includedir}/SaxObjC
-%{_includedir}/XmlRpc
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libDOM*.so
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libSaxObjC*.so
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libXmlRpc*.so
+%{_prefix}/System/Library/Headers/%{libcombo}/DOM
+%{_prefix}/System/Library/Headers/%{libcombo}/SaxObjC
+%{_prefix}/System/Library/Headers/%{libcombo}/XmlRpc
 
 %files core
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libEOControl*.so.%{version}*
-%attr(755,root,root) %{_libdir}/libNGExtensions*.so.%{version}*
-%attr(755,root,root) %{_libdir}/libNGStreams*.so.%{version}*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGExtensions*.so.%{version}*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGStreams*.so.%{version}*
 
 %files core-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libEOControl*.so
-%attr(755,root,root) %{_libdir}/libNGExtensions*.so
-%attr(755,root,root) %{_libdir}/libNGStreams*.so
-%{_includedir}/EOControl
-%{_includedir}/NGExtensions
-%{_includedir}/NGStreams
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGExtensions*.so
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGStreams*.so
+%{_prefix}/System/Library/Headers/%{libcombo}/NGExtensions
+%{_prefix}/System/Library/Headers/%{libcombo}/NGStreams
 
 %files mime
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libNGMime*.so.%{version}*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGMime*.so.%{version}*
 
 %files mime-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libNGMime*.so
-%{_includedir}/NGImap4
-%{_includedir}/NGMail
-%{_includedir}/NGMime
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGMime*.so
+%{_prefix}/System/Library/Headers/%{libcombo}/NGImap4
+%{_prefix}/System/Library/Headers/%{libcombo}/NGMail
+%{_prefix}/System/Library/Headers/%{libcombo}/NGMime
 
 %files appserver
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libNGObjWeb*.so.%{version}*
-%attr(755,root,root) %{_libdir}/libNGXmlRpc*.so.%{version}*
-%attr(755,root,root) %{_libdir}/libSoOFS*.so.%{version}*
-%attr(755,root,root) %{_libdir}/libWEExtensions*.so.%{version}*
-%attr(755,root,root) %{_libdir}/libWOExtensions*.so.%{version}*
-%attr(755,root,root) %{_libdir}/libWOXML*.so.%{version}*
-# XXX: missing {%{_datadir},%{_libdir}}/sope-%{version} dirs
-%dir %{_datadir}/sope-%{version}/ngobjweb
-%{_datadir}/sope-%{version}/ngobjweb/DAVPropMap.plist
-%{_datadir}/sope-%{version}/ngobjweb/Defaults.plist
-%{_datadir}/sope-%{version}/ngobjweb/Languages.plist
-%dir %{_libdir}/sope-%{version}/products
-%{_libdir}/sope-%{version}/products/SoCore.sxp
-%{_libdir}/sope-%{version}/products/SoOFS.sxp
-%dir %{_libdir}/sope-%{version}/wox-builders
-%{_libdir}/sope-%{version}/wox-builders/WEExtensions.wox
-%{_libdir}/sope-%{version}/wox-builders/WOExtensions.wox
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGObjWeb*.so.%{version}*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGXmlRpc*.so.%{version}*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libSoOFS*.so.%{version}*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWEExtensions*.so.%{version}*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWOExtensions*.so.%{version}*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWOXML*.so.%{version}*
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}
+%dir %{_prefix}/System/Library/Libraries/Resources/NGObjWeb
+%{_prefix}/System/Library/Libraries/Resources/NGObjWeb/*.plist
+%dir %{_prefix}/System/Library/SoProducts-%{version}
+%dir %{_prefix}/System/Library/SoProducts-%{version}/*.sxp
+%dir %{_prefix}/System/Library/SoProducts-%{version}/*.sxp/Resources
+%{_prefix}/System/Library/SoProducts-%{version}/*.sxp/Resources/*.plist
+%{_prefix}/System/Library/SoProducts-%{version}/*.sxp/Resources/Version
+%dir %{_prefix}/System/Library/SoProducts-%{version}/*.sxp/%{gscpu}
+%dir %{_prefix}/System/Library/SoProducts-%{version}/*.sxp/%{gscpu}/%{gsos}
+%dir %{_prefix}/System/Library/SoProducts-%{version}/*.sxp/%{gscpu}/%{gsos}/%{libcombo}
+%attr(755,root,root) %{_prefix}/System/Library/SoProducts-%{version}/*.sxp/%{gscpu}/%{gsos}/%{libcombo}/*
+%{_prefix}/System/Library/SoProducts-%{version}/*.sxp/stamp.make
+%dir %{_prefix}/System/Library/WOxElemBuilders-%{version}
+%dir %{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox
+%{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/*.plist
+%dir %{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/Resources
+%{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/Resources/*.plist
+%{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/stamp.make
+%dir %{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/%{gscpu}
+%dir %{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/%{gscpu}/%{gsos}
+%dir %{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/%{gscpu}/%{gsos}/%{libcombo}
+%attr(755,root,root) %{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/%{gscpu}/%{gsos}/%{libcombo}/*
 
 %files appserver-tools
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_sbindir}/sope-%{version}
-%attr(755,root,root) %{_bindir}/xmlrpc_call
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/sope-%{version}
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/xmlrpc_call
 
 %files appserver-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/wod
-%attr(755,root,root) %{_libdir}/libNGObjWeb*.so
-%attr(755,root,root) %{_libdir}/libNGXmlRpc*.so
-%attr(755,root,root) %{_libdir}/libSoOFS*.so
-%attr(755,root,root) %{_libdir}/libWEExtensions*.so
-%attr(755,root,root) %{_libdir}/libWOExtensions*.so
-%attr(755,root,root) %{_libdir}/libWOXML*.so
-%{_includedir}/NGHttp
-%{_includedir}/NGObjWeb
-%{_includedir}/NGXmlRpc
-%{_includedir}/SoOFS
-%{_includedir}/WEExtensions
-%{_includedir}/WOExtensions
-%{_includedir}/WOXML
-%{_libdir}/GNUstep/System/Library/Makefiles/Additional/ngobjweb.make
-%{_libdir}/GNUstep/System/Library/Makefiles/woapp.make
-%{_libdir}/GNUstep/System/Library/Makefiles/wobundle.make
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/wod
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGObjWeb*.so
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGXmlRpc*.so
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libSoOFS*.so
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWEExtensions*.so
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWOExtensions*.so
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWOXML*.so
+%{_prefix}/System/Library/Headers/%{libcombo}/NGHttp
+%{_prefix}/System/Library/Headers/%{libcombo}/NGObjWeb
+%{_prefix}/System/Library/Headers/%{libcombo}/NGXmlRpc
+%{_prefix}/System/Library/Headers/%{libcombo}/SoOFS
+%{_prefix}/System/Library/Headers/%{libcombo}/WEExtensions
+%{_prefix}/System/Library/Headers/%{libcombo}/WOExtensions
+%{_prefix}/System/Library/Headers/%{libcombo}/WOXML
+%{_prefix}/System/Library/Makefiles/Additional/ngobjweb.make
+%{_prefix}/System/Library/Makefiles/woapp.make
+%{_prefix}/System/Library/Makefiles/wobundle.make
 
 %files ldap
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libNGLdap*.so.%{version}*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGLdap*.so.%{version}*
 
 %files ldap-tools
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/ldap2dsml
-%attr(755,root,root) %{_bindir}/ldapchkpwd
-%attr(755,root,root) %{_bindir}/ldapls
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/ldap2dsml
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/ldapchkpwd
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/ldapls
 
 %files ldap-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libNGLdap*.so
-%{_includedir}/NGLdap
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGLdap*.so
+%{_prefix}/System/Library/Headers/%{libcombo}/NGLdap
 
 %files ical
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libNGiCal*.so.%{version}*
-%{_datadir}/sope-%{version}/saxmappings/NGiCal.xmap
-#%{_libdir}/sope-%{version}/saxdrivers/iCalSaxDriver.sax
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGiCal*.so.%{version}*
+%attr(755,root,root) %{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/%{gscpu}/%{gsos}/%{libcombo}/*
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/Resources
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/%{gscpu}
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/%{gscpu}/%{gsos}
+%dir %{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/%{gscpu}/%{gsos}/%{libcombo}
+%dir %{_prefix}/System/Library/SaxMappings
+%{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/*.plist
+%{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/Resources/*.plist
+%{_prefix}/System/Library/SaxMappings/NGiCal.xmap
+%{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/stamp.make
+
 
 %files ical-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libNGiCal*.so
-%{_includedir}/NGiCal
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGiCal*.so
+%{_prefix}/System/Library/Headers/%{libcombo}/NGiCal
 
 %files gdl1
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/connect-EOAdaptor
-%attr(755,root,root) %{_bindir}/load-EOAdaptor
-%attr(755,root,root) %{_libdir}/libGDLAccess*.so.4.5*
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/connect-EOAdaptor
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/load-EOAdaptor
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libGDLAccess*.so.%{version}*
 
 %files gdl1-postgresql
 %defattr(644,root,root,755)
-%{_libdir}/sope-%{version}/dbadaptors/PostgreSQL.gdladaptor
+%dir %{_prefix}/System/Library/GDLAdaptors-%{version}
+%dir %{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor
+%{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/stamp.make
+%dir %{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/Resources
+%{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/Resources/*
+%dir %{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/%{gscpu}
+%dir %{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/%{gscpu}/%{gsos}
+%dir %{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/%{gscpu}/%{gsos}/%{libcombo}
+%attr(755,root,root) %{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/%{gscpu}/%{gsos}/%{libcombo}/*
 
 %files gdl1-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libGDLAccess*.so
-%{_includedir}/GDLAccess
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libGDLAccess*.so
+%{_prefix}/System/Library/Headers/%{libcombo}/GDLAccess
+
+%files EOF
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libEOControl*.so.%{version}*
+
+%files EOF-devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libEOControl*.so
+%{_prefix}/System/Library/Headers/%{libcombo}/EOControl
