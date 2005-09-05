@@ -1,4 +1,5 @@
 # TODO: descs for subpackages
+#	Mysql and Sqlite backends
 %define		trunkdate	200508311700
 %define		sope_makeflags	-w -s debug=yes strip=no
 %define		versionalpha	r1098
@@ -22,37 +23,29 @@ BuildRequires:	binutils >= 2.15.90
 BuildRequires:	bison
 BuildRequires:	cyrus-sasl-devel >= 2.1.18
 BuildRequires:	expat-devel >= 1.95.7
-BuildRequires:	ffcall-devel >= 1.10
 BuildRequires:	flex
-BuildRequires:	gcc-objc
 BuildRequires:	gettext-devel >= 0.14.1
 BuildRequires:	glibc-devel >= 6:2.3.4
-BuildRequires:	gmp-devel >= 4.1.2
 BuildRequires:	gnustep-base-devel >= 1.10.0
-BuildRequires:	gnustep-make >= 1.10.0
-BuildRequires:	gnustep-make-devel >= 1.10.0
 BuildRequires:	libffi-devel >= 3.3.5
-BuildRequires:	libfoundation-devel
+#BuildRequires:	libfoundation-devel
 BuildRequires:	libical
-BuildRequires:	libobjc-lf2-devel
+#BuildRequires:	libobjc-lf2-devel
 BuildRequires:	libstdc++-devel >= 3.3.45
 BuildRequires:	libtool >= 1.5.10
 BuildRequires:	libxml >= 1.8.17
-BuildRequires:	libxml2-devel >= 2.6.14
 BuildRequires:	openldap-devel >= 2.2.17
 BuildRequires:	openssl-devel >= 0.9.7
 BuildRequires:	postgresql-devel >= 7.4.0
-BuildRequires:	zlib-devel >= 1.2.1
-Requires:	apache >= 2.0.50
-Requires:	libfoundation
+#Requires:	apache >= 2.0.50
+#Requires:	libfoundation
 Requires:	libical-sope
-#Requires:	libobjc
-Requires:	libobjc-lf2
+Requires:	libobjc
+#Requires:	libobjc-lf2
 Requires:	libxml2 >= 2.6.14
 Requires:	openldap >= 2.2.10
 # does it really require local database?
-Requires:	postgresql >= 7.2.0
-Requires:	zlib >= 1.1.0
+#Requires:	postgresql >= 7.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _prefix         /usr/%{_lib}/GNUstep
@@ -242,7 +235,9 @@ Pliki nag³ówkowe dla szkieletu Enterprise Objects Framework.
 
 %build
 . %{_prefix}/System/Library/Makefiles/GNUstep.sh
+./configure --with-gnustep
 %{__make} \
+	all \
 	OPTFLAG="%{rpmcflags}" \
 	messages=yes
 
@@ -253,11 +248,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_prefix}/System \
 	INSTALL_ROOT_DIR=$RPM_BUILD_ROOT
-
-rm -f ${RPM_BUILD_ROOT}%{prefix}/bin/rss2plist1
-rm -f ${RPM_BUILD_ROOT}%{prefix}/bin/rss2plist2
-rm -f ${RPM_BUILD_ROOT}%{prefix}/bin/rssparse
-rm -f ${RPM_BUILD_ROOT}%{prefix}/bin/testqp
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -385,7 +375,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files appserver-tools
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/gcs_*
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/rss*
 %attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/sope-%{version}
+%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/testqp
 %attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/xmlrpc_call
 
 %files appserver-devel
@@ -449,6 +442,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/connect-EOAdaptor
 %attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/load-EOAdaptor
 %attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libGDLAccess*.so.%{version}*
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libGDLContentStore*.so.%{version}*
 
 %files gdl1-postgresql
 %defattr(644,root,root,755)
@@ -466,6 +460,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libGDLAccess*.so
 %{_prefix}/System/Library/Headers/%{libcombo}/GDLAccess
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libGDLContentStore*.so
+%{_prefix}/System/Library/Headers/%{libcombo}/GDLContentStore
 
 %files EOF
 %defattr(644,root,root,755)
