@@ -8,7 +8,7 @@ Summary:	SKYRiX Object Publishing Environment
 Summary(pl):	SKYRiX Object Publishing Environment - ¶rodowisko do publikowania obiektów
 Name:		sope
 Version:	4.5
-Release:	0.1
+Release:	0.2
 Vendor:		http://www.opengroupware.org/
 License:	GPL
 Group:		Development/Libraries
@@ -210,7 +210,7 @@ sope-gdl1 devel package.
 Summary:	Enterprise Objects Framework
 Summary(pl):	Szkielet Enterprise Objects Framework
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-core = %{version}-%{release}
 
 %description EOF
 Enterprise Objects Framework.
