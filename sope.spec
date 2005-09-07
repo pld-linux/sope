@@ -13,7 +13,7 @@ Vendor:		http://www.opengroupware.org/
 License:	GPL
 Group:		Development/Libraries
 Source0:	http://download.opengroupware.org/nightly/sources/trunk/%{name}-trunk-%{versionalpha}-%{trunkdate}.tar.gz
-# Source0-md5:	
+# Source0-md5:	2ee4dd3826cac5f8d44017af2462dfb3
 URL:		http://www.opengroupware.org/
 BuildRequires:	STLport-devel >= 4.6.2
 BuildRequires:	apache-devel >= 2.0.50
