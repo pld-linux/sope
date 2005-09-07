@@ -1,8 +1,8 @@
 # TODO: descs for subpackages
 #	Mysql and Sqlite backends
-%define		trunkdate	200508311700
+%define		trunkdate	200509061700
 %define		sope_makeflags	-w -s debug=yes strip=no
-%define		versionalpha	r1098
+%define		versionalpha	r1101
 
 Summary:	SKYRiX Object Publishing Environment
 Summary(pl):	SKYRiX Object Publishing Environment - ¶rodowisko do publikowania obiektów
@@ -12,8 +12,8 @@ Release:	0.2
 Vendor:		http://www.opengroupware.org/
 License:	GPL
 Group:		Development/Libraries
-Source0:	http://download.opengroupware.org/sources/trunk/%{name}-trunk-%{versionalpha}-%{trunkdate}.tar.gz
-# Source0-md5:	22bf6213e39fdc8bdeaede293e419cfd
+Source0:	http://download.opengroupware.org/nightly/sources/trunk/%{name}-trunk-%{versionalpha}-%{trunkdate}.tar.gz
+# Source0-md5:	
 URL:		http://www.opengroupware.org/
 BuildRequires:	STLport-devel >= 4.6.2
 BuildRequires:	apache-devel >= 2.0.50
