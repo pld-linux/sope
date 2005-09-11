@@ -1,5 +1,9 @@
 # TODO: descs for subpackages
 #	Mysql and Sqlite backends
+# - cleanup
+# - translations
+# - bconds ond DB backends
+# - R and BRs
 %define		trunkdate	200509061700
 %define		sope_makeflags	-w -s debug=yes strip=no
 %define		versionalpha	r1101
@@ -8,7 +12,7 @@ Summary:	SKYRiX Object Publishing Environment
 Summary(pl):	SKYRiX Object Publishing Environment - ¶rodowisko do publikowania obiektów
 Name:		sope
 Version:	4.5
-Release:	0.2
+Release:	0.3
 Vendor:		http://www.opengroupware.org/
 License:	GPL
 Group:		Development/Libraries
@@ -48,9 +52,9 @@ Requires:	openldap >= 2.2.10
 #Requires:	postgresql >= 7.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define         _prefix         /usr/%{_lib}/GNUstep
+%define         prefix         %{_libdir}/GNUstep-libFoundation
 
-%define		libcombo	gnu-gnu-gnu
+%define		libcombo	gnu-fd-nil
 %define		gsos		linux-gnu
 %ifarch %{ix86}
 %define		gscpu		ix86
@@ -58,6 +62,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 # also s/alpha.*/alpha/, but we use only "alpha" arch for now
 %define		gscpu		%(echo %{_target_cpu} | sed -e 's/amd64/x86_64/;s/ppc/powerpc/')
 %endif
+
+%define 		sope_libversion		4.5
+%define		sope_major_version	4
+%define		sope_minor_version	5
 
 
 %description
@@ -80,162 +88,312 @@ zawiera du¿y zbiór klas wielokrotnego u¿ycia do: przetwarzania XML
 ³±czno¶ci z serwerami relacyjnych baz danych oraz przetwarzania
 formatu iCalendar.
 
+#########################################
 %package xml
-Summary:	sope-xml
-Group:		Libraries
+Summary:      SOPE libraries for XML processing
+Group:        Development/Libraries
+AutoReqProv:  off
 
 %description xml
-sope-xml
+The SOPE libraries for XML processing contain:
+
+  * a SAX2 Implementation for Objective-C
+  * an attempt to implement DOM on top of SaxObjC
+  * an XML-RPC implementation (without a transport layer)
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 
 %package xml-devel
-Summary:	sope-xml devel
-Group:		Development/Libraries
+Summary:      Development files for the SOPE XML libraries
+Group:        Development/Libraries
+Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-xml libxml2-devel
+AutoReqProv:  off
 
 %description xml-devel
-sope-xml devel package.
+This package contains the development files of the SOPE XML libraries.
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 
 %package xml-tools
-Summary:	sope-xml tools
-Group:		Development/Tools
+Summary:      Tools (domxml/saxxml/xmln)
+Group:        Development/Libraries
+Requires:     sope%{sope_major_version}%{sope_minor_version}-xml
+AutoReqProv:  off
 
 %description xml-tools
-sope-xml tools package.
+This package contains some tools:
 
+  * saxxml    - parse a file using SAX and print out the XML
+  * xmln      - convert a given file to PYX using a SAX handler
+  * domxml    - parse a file into a DOM and print out the XML
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
+#########################################
 %package core
-Summary:	sope-core
-Group:		Libraries
+Summary:      Core libraries of the SOPE application server
+Group:        Development/Libraries
+Requires:     sope%{sope_major_version}%{sope_minor_version}-xml libfoundation%{lfmaj}%{lfmin}
+AutoReqProv:  off
 
 %description core
-sope-core
+The SOPE core libraries contain:
+
+  * various Foundation extensions
+  * a java.io like stream and socket library
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 
 %package core-devel
-Summary:	sope-core devel
-Group:		Development/Libraries
+Summary:      Development files for the SOPE core libraries
+Group:        Development/Libraries
+Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-core
+AutoReqProv:  off
 
 %description core-devel
-sope-core devel package.
+This package contains the header files for the SOPE core
+libraries,  which are part of the SOPE application server framework.
 
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
+#########################################
 %package mime
-Summary:	sope-mime
-Group:		Libraries
+Summary:      SOPE libraries for MIME processing
+Group:        Development/Libraries
+Requires:     sope%{sope_major_version}%{sope_minor_version}-core sope%{sope_major_version}%{sope_minor_version}-xml libfoundation%{lfmaj}%{lfmin}
+AutoReqProv:  off
 
 %description mime
-sope-mime
+The SOPE libraries for MIME processing contain:
+
+  * classes for processing MIME entities
+  * a full IMAP4 implementation
+  * prototypical POP3 and SMTP processor
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 
 %package mime-devel
-Summary:	sope-mime devel
-Group:		Development/Libraries
+Summary:      Development files for the SOPE MIME libraries
+Group:        Development/Libraries
+Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-mime
+AutoReqProv:  off
 
 %description mime-devel
-sope-mime devel package.
+This package contains the development files of the SOPE
+MIME libraries.
 
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
+#########################################
 %package appserver
-Summary:	sope-appserver
-Group:		Libraries
+Summary:      SOPE application server libraries
+Group:        Development/Libraries
+Requires:     sope%{sope_major_version}%{sope_minor_version}-xml sope%{sope_major_version}%{sope_minor_version}-core sope%{sope_major_version}%{sope_minor_version}-mime libfoundation%{lfmaj}%{lfmin}
+AutoReqProv:  off
 
 %description appserver
-sope-appserver
+The SOPE application server libraries provide:
+
+  * template rendering engine, lots of dynamic elements
+  * HTTP client/server
+  * XML-RPC client
+  * WebDAV server framework
+  * session management
+  * scripting extensions for Foundation, JavaScript bridge
+  * DOM tree rendering library
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 
 %package appserver-devel
-Summary:	sope-appserver devel
-Group:		Development/Libraries
+Summary:      Development files for the SOPE application server libraries
+Group:        Development/Libraries
+Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-appserver
+AutoReqProv:  off
 
 %description appserver-devel
-sope-appserver devel package.
+This package contains the development files for the SOPE application server
+libraries.
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 
 %package appserver-tools
-Summary:	sope-appserver tools
-Group:		Development/Tools
+Summary:      Tools shipped with the SOPE application server
+Group:        Development/Libraries
+Requires:     sope%{sope_major_version}%{sope_minor_version}-appserver
+AutoReqProv:  off
 
 %description appserver-tools
-sope-appserver tools package.
+This package contains some tools shipped with the SOPE application
+server framework, which are mostly useful for development and debugging
+of SOPE applications.
 
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
+#########################################
 %package ldap
-Summary:	sope-ldap
-Group:		Libraries
+Summary:      SOPE libraries for LDAP access
+Group:        Development/Libraries
+Requires:     sope%{sope_major_version}%{sope_minor_version}-core sope%{sope_major_version}%{sope_minor_version}-xml libfoundation%{lfmaj}%{lfmin}
+AutoReqProv:  off
 
 %description ldap
-sope-ldap
+The SOPE libraries for LDAP access contain an Objective-C wrapper for
+LDAP directory services.
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 
 %package ldap-devel
-Summary:	sope-ldap devel
-Group:		Development/Libraries
+Summary:      Development files for the SOPE LDAP libraries
+Group:        Development/Libraries
+Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-ldap
+AutoReqProv:  off
 
 %description ldap-devel
-sope-ldap devel package.
+This package contains the development files of the SOPE
+LDAP libraries.
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 
 %package ldap-tools
-Summary:	sope-ldap tools
-Group:		Development/Tools
+Summary:      Tools (ldap2dsml/ldapchkpwd/ldapls)
+Group:        Development/Libraries
+Requires:     sope%{sope_major_version}%{sope_minor_version}-ldap
+AutoReqProv:  off
 
 %description ldap-tools
-sope-ldap tools package.
+This package contains some tools:
 
+  * ldap2dsml   - return the output of an LDAP server as DSML
+                  (directory service markup language)
+  * ldapchkpwd  - checks whether a login/password combo would be authenticated
+  * ldapls      - an 'ls' for LDAP directories
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
+#########################################
 %package ical
-Summary:	sope-ical
-Group:		Libraries
+Summary:      SOPE libraries for iCal handling
+Group:        Development/Libraries
+Requires:     sope%{sope_major_version}%{sope_minor_version}-xml sope%{sope_major_version}%{sope_minor_version}-core libfoundation%{lfmaj}%{lfmin}
+AutoReqProv:  off
 
 %description ical
-sope-ical
+The SOPE libraries for iCal handling contain classes for iCalendar and
+vCard objects.
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 
 %package ical-devel
-Summary:	sope-ical devel
-Group:		Development/Libraries
+Summary:      Development files for the SOPE iCal libraries
+Group:        Development/Libraries
+Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-ical
+AutoReqProv:  off
 
 %description ical-devel
-sope-ical devel package.
+This package contains the development files of the SOPE iCal libraries.
 
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
+#########################################
 %package gdl1
-Summary:	sope-gdl1
-Group:		Libraries
+Summary:      GNUstep database libraries for SOPE
+Group:        Development/Libraries
+Requires:     sope%{sope_major_version}%{sope_minor_version}-core sope%{sope_major_version}%{sope_minor_version}-xml libfoundation%{lfmaj}%{lfmin}
+AutoReqProv:  off
 
 %description gdl1
-sope-gdl1
+This package contains a fork of the GNUstep database libraries used
+by the SOPE application server (including GDLContentStore).
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 
 %package gdl1-postgresql
-Summary:	sope-gdl1-postgresql
-Group:		Libraries
+Summary:      PostgreSQL connector for SOPE's fork of the GNUstep database environment
+Group:        Development/Libraries
+Requires:     sope%{sope_major_version}%{sope_minor_version}-gdl1
+AutoReqProv:  off
+%if %{?_postgresql_server_is_within_postgresql:1}%{!?_postgresql_server_is_within_postgresql:0}
+Requires: postgresql
+%else
+Requires: postgresql-server
+%endif
 
 %description gdl1-postgresql
-sope-gdl1-postgresql
+This package contains the PostgreSQL connector for SOPE's fork of the
+GNUstep database libraries.
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
+
+%package gdl1-mysql
+Summary:      MySQL connector for SOPE's fork of the GNUstep database environment
+Group:        Development/Libraries
+Requires:     sope%{sope_major_version}%{sope_minor_version}-gdl1
+AutoReqProv:  off
+
+%description gdl1-mysql
+This package contains the MySQL connector for SOPE's fork of the
+GNUstep database libraries.
+
+#%package gdl1-sqlite3
+#Summary:      SQLite3 connector for SOPE's fork of the GNUstep database environment
+#Group:        Development/Libraries
+#Requires:     sope%{sope_major_version}%{sope_minor_version}-gdl1
+#AutoReqProv:  off
+#
+#%description gdl1-sqlite3
+#This package contains the SQLite3 connector for SOPE's fork of the
+#GNUstep database libraries.
+#
+#SOPE is a framework for developing web applications and services. The
+#name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
+
+%package gdl1-tools
+Summary:      Tools (gcs_cat/gcs_gensql/gcs_ls/gcs_mkdir/gcs_recreatequick)
+Group:        Development/Libraries
+Requires:     sope%{sope_major_version}%{sope_minor_version}-gdl1
+AutoReqProv:  off
+
+%description gdl1-tools
+Various tools around the GDLContentStore.
+
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 
 %package gdl1-devel
-Summary:	sope-gdl1 devel
-Group:		Development/Libraries
+Summary:      Development files for the GNUstep database libraries
+Group:        Development/Libraries
+Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-gdl1 postgresql-devel
+AutoReqProv:  off
 
 %description gdl1-devel
-sope-gdl1 devel package.
+This package contains the header files for SOPE's fork of the GNUstep
+database libraries (including GDLContentStore).
 
-%package EOF
-Summary:	Enterprise Objects Framework
-Summary(pl):	Szkielet Enterprise Objects Framework
-Group:		Development/Libraries
-Requires:	%{name}-core = %{version}-%{release}
-
-%description EOF
-Enterprise Objects Framework.
-
-%description EOF -l pl
-Szkielet Enterprise Objects Framework.
-
-%package EOF-devel
-Summary:	Headers for Enterprise Objects Framework
-Summary(pl):	Pliki nag³ówkowe dla szkieletu Enterprise Objects Framework
-Group:		Development/Libraries
-Requires:	%{name}-EOF = %{version}-%{release}
-
-%description EOF-devel
-Headers for Enterprise Objects Framework.
-
-%description EOF-devel -l pl
-Pliki nag³ówkowe dla szkieletu Enterprise Objects Framework.
+SOPE is a framework for developing web applications and services. The
+name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 
 %prep
 %setup -q -n %{name}
 
 %build
-. %{_prefix}/System/Library/Makefiles/GNUstep.sh
-./configure --with-gnustep
+. %{prefix}/System/Library/Makefiles/GNUstep.sh
+export LIBRARY_COMBO=%{libcombo}
+export LDFLAGS="-llibobjc.so.lf2 %{rpmldflags}"
+./configure \
+	--prefix=$RPM_BUILD_ROOT%{_prefix} \
+	--gsmake=%{prefix}/System
+
 %{__make} \
 	all \
 	OPTFLAG="%{rpmcflags}" \
@@ -243,14 +401,33 @@ Pliki nag³ówkowe dla szkieletu Enterprise Objects Framework.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-. %{_prefix}/System/Library/Makefiles/GNUstep.sh
+. %{prefix}/System/Library/Makefiles/GNUstep.sh
 
 %{__make} install \
-	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_prefix}/System \
+	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{prefix}/System \
 	INSTALL_ROOT_DIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post appserver
+if [ $1 = 1 ]; then
+  if [ -d %{_sysconfdir}/ld.so.conf.d ]; then
+    echo "%{prefix}/lib" > %{_sysconfdir}/ld.so.conf.d/sope%{sope_major_version}%{sope_minor_version}.conf
+  elif [ ! "`grep '%{prefix}/lib' %{_sysconfdir}/ld.so.conf`" ]; then
+    echo "%{prefix}/lib" >> %{_sysconfdir}/ld.so.conf
+  fi
+  /sbin/ldconfig
+fi
+
+# ****************************** postun *********************************
+%postun appserver
+if [ $1 = 0 ]; then
+  if [ -e %{_sysconfdir}/ld.so.conf.d/sope%{sope_major_version}%{sope_minor_version}.conf ]; then
+    rm -f %{_sysconfdir}/ld.so.conf.d/sope%{sope_major_version}%{sope_minor_version}.conf
+  fi
+  /sbin/ldconfig
+fi
 
 %post	xml -p /sbin/ldconfig
 %postun	xml -p /sbin/ldconfig
@@ -261,9 +438,6 @@ rm -rf $RPM_BUILD_ROOT
 %post	mime -p /sbin/ldconfig
 %postun	mime -p /sbin/ldconfig
 
-%post	appserver -p /sbin/ldconfig
-%postun	appserver -p /sbin/ldconfig
-
 %post	ldap -p /sbin/ldconfig
 %postun	ldap -p /sbin/ldconfig
 
@@ -273,201 +447,153 @@ rm -rf $RPM_BUILD_ROOT
 %post	gdl1 -p /sbin/ldconfig
 %postun	gdl1 -p /sbin/ldconfig
 
-%post	EOF -p /sbin/ldconfig
-%postun	EOF -p /sbin/ldconfig
-
-
 %files xml
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libDOM*.so.%{version}*
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libSaxObjC*.so.%{version}*
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libXmlRpc*.so.%{version}*
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/%{gscpu}
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/%{gscpu}/%{gsos}
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/%{gscpu}/%{gsos}/%{libcombo}
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/%{gscpu}
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/%{gscpu}/%{gsos}
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/%{gscpu}/%{gsos}/%{libcombo}
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/Resources
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/Resources
-%attr(755,root,root) %{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/%{gscpu}/%{gsos}/%{libcombo}/*
-%attr(755,root,root) %{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/%{gscpu}/%{gsos}/%{libcombo}/*
-%{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/*.plist
-%{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/Resources/*.plist
-%{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/Resources/*.plist
-%{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/*.plist
-%{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/Resources/Version
-%{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/Resources/Version
-%{_prefix}/System/Library/SaxDrivers-%{version}/libxmlSAXDriver.sax/stamp.make
-%{_prefix}/System/Library/SaxDrivers-%{version}/STXSaxDriver.sax/stamp.make
+%defattr(-,root,root,-)
+%{_libdir}/libDOM*.so.%{sope_libversion}*
+%{_libdir}/libSaxObjC*.so.%{sope_libversion}*
+%{_libdir}/libXmlRpc*.so.%{sope_libversion}*
+%{_libdir}/sope-%{sope_libversion}/saxdrivers/libxmlSAXDriver.sax
+%{_libdir}/sope-%{sope_libversion}/saxdrivers/STXSaxDriver.sax
 
 %files xml-tools
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/domxml
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/saxxml
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/xmln
+%defattr(-,root,root,-)
+%{_bindir}/domxml
+%{_bindir}/saxxml
+%{_bindir}/xmln
 
 %files xml-devel
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libDOM*.so
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libSaxObjC*.so
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libXmlRpc*.so
-%{_prefix}/System/Library/Headers/%{libcombo}/DOM
-%{_prefix}/System/Library/Headers/%{libcombo}/SaxObjC
-%{_prefix}/System/Library/Headers/%{libcombo}/XmlRpc
+%defattr(-,root,root,-)
+%{_includedir}/DOM
+%{_includedir}/SaxObjC
+%{_includedir}/XmlRpc
+%{_libdir}/libDOM*.so
+%{_libdir}/libSaxObjC*.so
+%{_libdir}/libXmlRpc*.so
 
 %files core
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGExtensions*.so.%{version}*
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGStreams*.so.%{version}*
+%defattr(-,root,root,-)
+%{_libdir}/libEOControl*.so.%{sope_libversion}*
+%{_libdir}/libNGExtensions*.so.%{sope_libversion}*
+%{_libdir}/libNGStreams*.so.%{sope_libversion}*
 
 %files core-devel
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGExtensions*.so
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGStreams*.so
-%{_prefix}/System/Library/Headers/%{libcombo}/NGExtensions
-%{_prefix}/System/Library/Headers/%{libcombo}/NGStreams
+%defattr(-,root,root,-)
+%{_includedir}/EOControl
+%{_includedir}/NGExtensions
+%{_includedir}/NGStreams
+%{_libdir}/libEOControl*.so
+%{_libdir}/libNGExtensions*.so
+%{_libdir}/libNGStreams*.so
 
 %files mime
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGMime*.so.%{version}*
+%defattr(-,root,root,-)
+%{_libdir}/libNGMime*.so.%{sope_libversion}*
 
 %files mime-devel
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGMime*.so
-%{_prefix}/System/Library/Headers/%{libcombo}/NGImap4
-%{_prefix}/System/Library/Headers/%{libcombo}/NGMail
-%{_prefix}/System/Library/Headers/%{libcombo}/NGMime
+%defattr(-,root,root,-)
+%{_includedir}/NGImap4
+%{_includedir}/NGMail
+%{_includedir}/NGMime
+%{_libdir}/libNGMime*.so
 
 %files appserver
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGObjWeb*.so.%{version}*
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGXmlRpc*.so.%{version}*
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libSoOFS*.so.%{version}*
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWEExtensions*.so.%{version}*
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWOExtensions*.so.%{version}*
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWOXML*.so.%{version}*
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}
-%dir %{_prefix}/System/Library/Libraries/Resources/NGObjWeb
-%{_prefix}/System/Library/Libraries/Resources/NGObjWeb/*.plist
-%dir %{_prefix}/System/Library/SoProducts-%{version}
-%dir %{_prefix}/System/Library/SoProducts-%{version}/*.sxp
-%dir %{_prefix}/System/Library/SoProducts-%{version}/*.sxp/Resources
-%{_prefix}/System/Library/SoProducts-%{version}/*.sxp/Resources/*.plist
-%{_prefix}/System/Library/SoProducts-%{version}/*.sxp/Resources/Version
-%dir %{_prefix}/System/Library/SoProducts-%{version}/*.sxp/%{gscpu}
-%dir %{_prefix}/System/Library/SoProducts-%{version}/*.sxp/%{gscpu}/%{gsos}
-%dir %{_prefix}/System/Library/SoProducts-%{version}/*.sxp/%{gscpu}/%{gsos}/%{libcombo}
-%attr(755,root,root) %{_prefix}/System/Library/SoProducts-%{version}/*.sxp/%{gscpu}/%{gsos}/%{libcombo}/*
-%{_prefix}/System/Library/SoProducts-%{version}/*.sxp/stamp.make
-%dir %{_prefix}/System/Library/WOxElemBuilders-%{version}
-%dir %{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox
-%{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/*.plist
-%dir %{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/Resources
-%{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/Resources/*.plist
-%{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/stamp.make
-%dir %{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/%{gscpu}
-%dir %{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/%{gscpu}/%{gsos}
-%dir %{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/%{gscpu}/%{gsos}/%{libcombo}
-%attr(755,root,root) %{_prefix}/System/Library/WOxElemBuilders-%{version}/*.wox/%{gscpu}/%{gsos}/%{libcombo}/*
+%defattr(-,root,root,-)
+%{_libdir}/libNGObjWeb*.so.%{sope_libversion}*
+%{_libdir}/libNGXmlRpc*.so.%{sope_libversion}*
+%{_libdir}/libSoOFS*.so.%{sope_libversion}*
+%{_libdir}/libWEExtensions*.so.%{sope_libversion}*
+%{_libdir}/libWOExtensions*.so.%{sope_libversion}*
+%{_libdir}/libWOXML*.so.%{sope_libversion}*
+%{_datadir}/sope-%{sope_libversion}/ngobjweb/DAVPropMap.plist
+%{_datadir}/sope-%{sope_libversion}/ngobjweb/Defaults.plist
+%{_datadir}/sope-%{sope_libversion}/ngobjweb/Languages.plist
+%{_libdir}/sope-%{sope_libversion}/products/SoCore.sxp
+%{_libdir}/sope-%{sope_libversion}/products/SoOFS.sxp
+%{_libdir}/sope-%{sope_libversion}/wox-builders/WEExtensions.wox
+%{_libdir}/sope-%{sope_libversion}/wox-builders/WOExtensions.wox
+
 
 %files appserver-tools
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/gcs_*
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/rss*
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/sope-%{version}
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/testqp
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/xmlrpc_call
+%defattr(-,root,root,-)
+%{_sbindir}/sope-%{sope_major_version}.%{sope_minor_version}
+%{_bindir}/xmlrpc_call
 
 %files appserver-devel
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/wod
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGObjWeb*.so
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGXmlRpc*.so
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libSoOFS*.so
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWEExtensions*.so
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWOExtensions*.so
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libWOXML*.so
-%{_prefix}/System/Library/Headers/%{libcombo}/NGHttp
-%{_prefix}/System/Library/Headers/%{libcombo}/NGObjWeb
-%{_prefix}/System/Library/Headers/%{libcombo}/NGXmlRpc
-%{_prefix}/System/Library/Headers/%{libcombo}/SoOFS
-%{_prefix}/System/Library/Headers/%{libcombo}/WEExtensions
-%{_prefix}/System/Library/Headers/%{libcombo}/WOExtensions
-%{_prefix}/System/Library/Headers/%{libcombo}/WOXML
-%{_prefix}/System/Library/Makefiles/Additional/ngobjweb.make
-%{_prefix}/System/Library/Makefiles/woapp.make
-%{_prefix}/System/Library/Makefiles/wobundle.make
+%defattr(-,root,root,-)
+%{_bindir}/wod
+%{_includedir}/NGHttp
+%{_includedir}/NGObjWeb
+%{_includedir}/NGXmlRpc
+%{_includedir}/SoOFS
+%{_includedir}/WEExtensions
+%{_includedir}/WOExtensions
+%{_includedir}/WOXML
+%{_libdir}/libNGObjWeb*.so
+%{_libdir}/libNGXmlRpc*.so
+%{_libdir}/libSoOFS*.so
+%{_libdir}/libWEExtensions*.so
+%{_libdir}/libWOExtensions*.so
+%{_libdir}/libWOXML*.so
+%{prefix}/System/Library/Makefiles/Additional/ngobjweb.make
+%{prefix}/System/Library/Makefiles/woapp.make
+%{prefix}/System/Library/Makefiles/wobundle.make
 
 %files ldap
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGLdap*.so.%{version}*
+%defattr(-,root,root,-)
+%{_libdir}/libNGLdap*.so.%{sope_libversion}*
 
 %files ldap-tools
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/ldap2dsml
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/ldapchkpwd
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/ldapls
+%defattr(-,root,root,-)
+%{_bindir}/ldap2dsml
+%{_bindir}/ldapchkpwd
+%{_bindir}/ldapls
 
 %files ldap-devel
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGLdap*.so
-%{_prefix}/System/Library/Headers/%{libcombo}/NGLdap
+%defattr(-,root,root,-)
+%{_includedir}/NGLdap
+%{_libdir}/libNGLdap*.so
 
 %files ical
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGiCal*.so.%{version}*
-%attr(755,root,root) %{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/%{gscpu}/%{gsos}/%{libcombo}/*
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/Resources
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/%{gscpu}
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/%{gscpu}/%{gsos}
-%dir %{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/%{gscpu}/%{gsos}/%{libcombo}
-%dir %{_prefix}/System/Library/SaxMappings
-%{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/*.plist
-%{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/Resources/*.plist
-%{_prefix}/System/Library/SaxMappings/NGiCal.xmap
-%{_prefix}/System/Library/SaxDrivers-%{version}/versitSaxDriver.sax/stamp.make
-
+%defattr(-,root,root,-)
+%{_libdir}/libNGiCal*.so.%{sope_libversion}*
+%{_datadir}/sope-%{sope_libversion}/saxmappings/NGiCal.xmap
+%{_libdir}/sope-%{sope_libversion}/saxdrivers/versitSaxDriver.sax
 
 %files ical-devel
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libNGiCal*.so
-%{_prefix}/System/Library/Headers/%{libcombo}/NGiCal
+%defattr(-,root,root,-)
+%{_includedir}/NGiCal
+%{_libdir}/libNGiCal*.so
 
 %files gdl1
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/connect-EOAdaptor
-%attr(755,root,root) %{_prefix}/System/Tools/%{gscpu}/%{gsos}/%{libcombo}/load-EOAdaptor
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libGDLAccess*.so.%{version}*
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libGDLContentStore*.so.%{version}*
+%defattr(-,root,root,-)
+%{_bindir}/connect-EOAdaptor
+%{_bindir}/load-EOAdaptor
+%{_libdir}/libGDLAccess*.so.%{sope_libversion}*
+%{_libdir}/libGDLContentStore*.so.%{sope_libversion}*
 
 %files gdl1-postgresql
-%defattr(644,root,root,755)
-%dir %{_prefix}/System/Library/GDLAdaptors-%{version}
-%dir %{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor
-%{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/stamp.make
-%dir %{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/Resources
-%{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/Resources/*
-%dir %{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/%{gscpu}
-%dir %{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/%{gscpu}/%{gsos}
-%dir %{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/%{gscpu}/%{gsos}/%{libcombo}
-%attr(755,root,root) %{_prefix}/System/Library/GDLAdaptors-%{version}/*.gdladaptor/%{gscpu}/%{gsos}/%{libcombo}/*
+%defattr(-,root,root,-)
+%{_libdir}/sope-%{sope_libversion}/dbadaptors/PostgreSQL.gdladaptor
+
+#%files gdl1-mysql
+#%defattr(-,root,root,-)
+#%{_libdir}/sope-%{sope_libversion}/dbadaptors/MySQL.gdladaptor
+
+#%files gdl1-sqlite3
+#%defattr(-,root,root,-)
+#%{_libdir}/sope-%{sope_libversion}/dbadaptors/SQLite3.gdladaptor
+
+%files gdl1-tools
+%defattr(-,root,root,-)
+%{_bindir}/gcs_cat
+%{_bindir}/gcs_gensql
+%{_bindir}/gcs_ls
+%{_bindir}/gcs_mkdir
+%{_bindir}/gcs_recreatequick
 
 %files gdl1-devel
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libGDLAccess*.so
-%{_prefix}/System/Library/Headers/%{libcombo}/GDLAccess
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libGDLContentStore*.so
-%{_prefix}/System/Library/Headers/%{libcombo}/GDLContentStore
-
-%files EOF
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libEOControl*.so.%{version}*
-
-%files EOF-devel
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/libEOControl*.so
-%{_prefix}/System/Library/Headers/%{libcombo}/EOControl
+%defattr(-,root,root,-)
+%{_includedir}/GDLAccess
+%{_includedir}/GDLContentStore
+%{_libdir}/libGDLAccess*.so
+%{_libdir}/libGDLContentStore*.so
