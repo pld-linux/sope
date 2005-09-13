@@ -63,11 +63,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		gscpu		%(echo %{_target_cpu} | sed -e 's/amd64/x86_64/;s/ppc/powerpc/')
 %endif
 
-%define 		sope_libversion		4.5
-%define		sope_major_version	4
-%define		sope_minor_version	5
-
-
 %description
 The SOPE package is an extensive set of frameworks (16 frameworks,
 ~1500 classes) which form a complete Web application server
@@ -107,7 +102,9 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package xml-devel
 Summary:      Development files for the SOPE XML libraries
 Group:        Development/Libraries
-Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-xml libxml2-devel
+#Requires:     ogo-gnustep_make
+Requires:     %{name}-xml = %{version}-%{release}
+Requires:     libxml2-devel
 AutoReqProv:  off
 
 %description xml-devel
@@ -119,7 +116,7 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package xml-tools
 Summary:      Tools (domxml/saxxml/xmln)
 Group:        Development/Libraries
-Requires:     sope%{sope_major_version}%{sope_minor_version}-xml
+Requires:     %{name}-xml = %{version}-%{release}
 AutoReqProv:  off
 
 %description xml-tools
@@ -135,7 +132,8 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package core
 Summary:      Core libraries of the SOPE application server
 Group:        Development/Libraries
-Requires:     sope%{sope_major_version}%{sope_minor_version}-xml libfoundation%{lfmaj}%{lfmin}
+Requires:     %{name}-xml = %{version}-%{release}
+Requires:     libfoundation
 AutoReqProv:  off
 
 %description core
@@ -150,7 +148,7 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package core-devel
 Summary:      Development files for the SOPE core libraries
 Group:        Development/Libraries
-Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-core
+#Requires:     ogo-gnustep_make
 AutoReqProv:  off
 
 %description core-devel
@@ -163,7 +161,9 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package mime
 Summary:      SOPE libraries for MIME processing
 Group:        Development/Libraries
-Requires:     sope%{sope_major_version}%{sope_minor_version}-core sope%{sope_major_version}%{sope_minor_version}-xml libfoundation%{lfmaj}%{lfmin}
+Requires:     %{name}-core = %{version}-%{release}
+Requires:     %{name}-xml = %{version}-%{release}
+Requires:     libfoundation
 AutoReqProv:  off
 
 %description mime
@@ -179,7 +179,7 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package mime-devel
 Summary:      Development files for the SOPE MIME libraries
 Group:        Development/Libraries
-Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-mime
+#Requires:     ogo-gnustep_make
 AutoReqProv:  off
 
 %description mime-devel
@@ -192,7 +192,10 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package appserver
 Summary:      SOPE application server libraries
 Group:        Development/Libraries
-Requires:     sope%{sope_major_version}%{sope_minor_version}-xml sope%{sope_major_version}%{sope_minor_version}-core sope%{sope_major_version}%{sope_minor_version}-mime libfoundation%{lfmaj}%{lfmin}
+Requires:     %{name}-xml = %{version}-%{release}
+Requires:     %{name}-core = %{version}-%{release}
+Requires:     %{name}-mime = %{version}-%{release}
+Requires:     libfoundation
 AutoReqProv:  off
 
 %description appserver
@@ -212,7 +215,8 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package appserver-devel
 Summary:      Development files for the SOPE application server libraries
 Group:        Development/Libraries
-Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-appserver
+#Requires:     ogo-gnustep_make
+Requires:     %{name}-appserver = %{version}-%{release}
 AutoReqProv:  off
 
 %description appserver-devel
@@ -225,7 +229,7 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package appserver-tools
 Summary:      Tools shipped with the SOPE application server
 Group:        Development/Libraries
-Requires:     sope%{sope_major_version}%{sope_minor_version}-appserver
+Requires:     %{name}-appserver = %{version}-%{release}
 AutoReqProv:  off
 
 %description appserver-tools
@@ -239,7 +243,9 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package ldap
 Summary:      SOPE libraries for LDAP access
 Group:        Development/Libraries
-Requires:     sope%{sope_major_version}%{sope_minor_version}-core sope%{sope_major_version}%{sope_minor_version}-xml libfoundation%{lfmaj}%{lfmin}
+Requires:     %{name}-core = %{version}-%{release}
+Requires:     %{name}-xml = %{version}-%{release}
+Requires:     libfoundation
 AutoReqProv:  off
 
 %description ldap
@@ -252,7 +258,8 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package ldap-devel
 Summary:      Development files for the SOPE LDAP libraries
 Group:        Development/Libraries
-Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-ldap
+#Requires:     ogo-gnustep_make
+Requires:     %{name}-ldap = %{version}-%{release}
 AutoReqProv:  off
 
 %description ldap-devel
@@ -265,7 +272,7 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package ldap-tools
 Summary:      Tools (ldap2dsml/ldapchkpwd/ldapls)
 Group:        Development/Libraries
-Requires:     sope%{sope_major_version}%{sope_minor_version}-ldap
+Requires:     %{name}-ldap = %{version}-%{release}
 AutoReqProv:  off
 
 %description ldap-tools
@@ -282,7 +289,9 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package ical
 Summary:      SOPE libraries for iCal handling
 Group:        Development/Libraries
-Requires:     sope%{sope_major_version}%{sope_minor_version}-xml sope%{sope_major_version}%{sope_minor_version}-core libfoundation%{lfmaj}%{lfmin}
+Requires:     %{name}-xml = %{version}-%{release}
+Requires:     %{name}-core = %{version}-%{release}
+Requires:     libfoundation
 AutoReqProv:  off
 
 %description ical
@@ -295,7 +304,7 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package ical-devel
 Summary:      Development files for the SOPE iCal libraries
 Group:        Development/Libraries
-Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-ical
+#Requires:     ogo-gnustep_make
 AutoReqProv:  off
 
 %description ical-devel
@@ -307,7 +316,9 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package gdl1
 Summary:      GNUstep database libraries for SOPE
 Group:        Development/Libraries
-Requires:     sope%{sope_major_version}%{sope_minor_version}-core sope%{sope_major_version}%{sope_minor_version}-xml libfoundation%{lfmaj}%{lfmin}
+Requires:     %{name}-core = %{version}-%{release}
+Requires:     %{name}-xml = %{version}-%{release}
+Requires:     libfoundation
 AutoReqProv:  off
 
 %description gdl1
@@ -320,7 +331,7 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package gdl1-postgresql
 Summary:      PostgreSQL connector for SOPE's fork of the GNUstep database environment
 Group:        Development/Libraries
-Requires:     sope%{sope_major_version}%{sope_minor_version}-gdl1
+Requires:     %{name}-gdl1 = %{version}-%{release}
 AutoReqProv:  off
 %if %{?_postgresql_server_is_within_postgresql:1}%{!?_postgresql_server_is_within_postgresql:0}
 Requires: postgresql
@@ -338,7 +349,7 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package gdl1-mysql
 Summary:      MySQL connector for SOPE's fork of the GNUstep database environment
 Group:        Development/Libraries
-Requires:     sope%{sope_major_version}%{sope_minor_version}-gdl1
+Requires:     %{name}-gdl1 = %{version}-%{release}
 AutoReqProv:  off
 
 %description gdl1-mysql
@@ -348,7 +359,7 @@ GNUstep database libraries.
 #%package gdl1-sqlite3
 #Summary:      SQLite3 connector for SOPE's fork of the GNUstep database environment
 #Group:        Development/Libraries
-#Requires:     sope%{sope_major_version}%{sope_minor_version}-gdl1
+#Requires:     %{name}-gdl1 = %{version}-%{release}
 #AutoReqProv:  off
 #
 #%description gdl1-sqlite3
@@ -361,7 +372,7 @@ GNUstep database libraries.
 %package gdl1-tools
 Summary:      Tools (gcs_cat/gcs_gensql/gcs_ls/gcs_mkdir/gcs_recreatequick)
 Group:        Development/Libraries
-Requires:     sope%{sope_major_version}%{sope_minor_version}-gdl1
+Requires:     %{name}-gdl1 = %{version}-%{release}
 AutoReqProv:  off
 
 %description gdl1-tools
@@ -373,7 +384,9 @@ name "SOPE" (SKYRiX Object Publishing Environment) is inspired by ZOPE.
 %package gdl1-devel
 Summary:      Development files for the GNUstep database libraries
 Group:        Development/Libraries
-Requires:     ogo-gnustep_make sope%{sope_major_version}%{sope_minor_version}-gdl1 postgresql-devel
+#Requires:     ogo-gnustep_make
+Requires:     %{name}-gdl1 = %{version}-%{release}
+Requires:     postgresql-devel
 AutoReqProv:  off
 
 %description gdl1-devel
@@ -449,11 +462,11 @@ fi
 
 %files xml
 %defattr(-,root,root,-)
-%{_libdir}/libDOM*.so.%{sope_libversion}*
-%{_libdir}/libSaxObjC*.so.%{sope_libversion}*
-%{_libdir}/libXmlRpc*.so.%{sope_libversion}*
-%{_libdir}/sope-%{sope_libversion}/saxdrivers/libxmlSAXDriver.sax
-%{_libdir}/sope-%{sope_libversion}/saxdrivers/STXSaxDriver.sax
+%{_libdir}/libDOM*.so.%{version}*
+%{_libdir}/libSaxObjC*.so.%{version}*
+%{_libdir}/libXmlRpc*.so.%{version}*
+%{_libdir}/%{name}-%{version}/saxdrivers/libxmlSAXDriver.sax
+%{_libdir}/%{name}-%{version}/saxdrivers/STXSaxDriver.sax
 
 %files xml-tools
 %defattr(-,root,root,-)
@@ -472,9 +485,9 @@ fi
 
 %files core
 %defattr(-,root,root,-)
-%{_libdir}/libEOControl*.so.%{sope_libversion}*
-%{_libdir}/libNGExtensions*.so.%{sope_libversion}*
-%{_libdir}/libNGStreams*.so.%{sope_libversion}*
+%{_libdir}/libEOControl*.so.%{version}*
+%{_libdir}/libNGExtensions*.so.%{version}*
+%{_libdir}/libNGStreams*.so.%{version}*
 
 %files core-devel
 %defattr(-,root,root,-)
@@ -487,7 +500,7 @@ fi
 
 %files mime
 %defattr(-,root,root,-)
-%{_libdir}/libNGMime*.so.%{sope_libversion}*
+%{_libdir}/libNGMime*.so.%{version}*
 
 %files mime-devel
 %defattr(-,root,root,-)
@@ -498,24 +511,24 @@ fi
 
 %files appserver
 %defattr(-,root,root,-)
-%{_libdir}/libNGObjWeb*.so.%{sope_libversion}*
-%{_libdir}/libNGXmlRpc*.so.%{sope_libversion}*
-%{_libdir}/libSoOFS*.so.%{sope_libversion}*
-%{_libdir}/libWEExtensions*.so.%{sope_libversion}*
-%{_libdir}/libWOExtensions*.so.%{sope_libversion}*
-%{_libdir}/libWOXML*.so.%{sope_libversion}*
-%{_datadir}/sope-%{sope_libversion}/ngobjweb/DAVPropMap.plist
-%{_datadir}/sope-%{sope_libversion}/ngobjweb/Defaults.plist
-%{_datadir}/sope-%{sope_libversion}/ngobjweb/Languages.plist
-%{_libdir}/sope-%{sope_libversion}/products/SoCore.sxp
-%{_libdir}/sope-%{sope_libversion}/products/SoOFS.sxp
-%{_libdir}/sope-%{sope_libversion}/wox-builders/WEExtensions.wox
-%{_libdir}/sope-%{sope_libversion}/wox-builders/WOExtensions.wox
+%{_libdir}/libNGObjWeb*.so.%{version}*
+%{_libdir}/libNGXmlRpc*.so.%{version}*
+%{_libdir}/libSoOFS*.so.%{version}*
+%{_libdir}/libWEExtensions*.so.%{version}*
+%{_libdir}/libWOExtensions*.so.%{version}*
+%{_libdir}/libWOXML*.so.%{version}*
+%{_datadir}/%{name}-%{version}/ngobjweb/DAVPropMap.plist
+%{_datadir}/%{name}-%{version}/ngobjweb/Defaults.plist
+%{_datadir}/%{name}-%{version}/ngobjweb/Languages.plist
+%{_libdir}/%{name}-%{version}/products/SoCore.sxp
+%{_libdir}/%{name}-%{version}/products/SoOFS.sxp
+%{_libdir}/%{name}-%{version}/wox-builders/WEExtensions.wox
+%{_libdir}/%{name}-%{version}/wox-builders/WOExtensions.wox
 
 
 %files appserver-tools
 %defattr(-,root,root,-)
-%{_sbindir}/sope-%{sope_major_version}.%{sope_minor_version}
+%{_sbindir}/%{name}-%{version}
 %{_bindir}/xmlrpc_call
 
 %files appserver-devel
@@ -540,7 +553,7 @@ fi
 
 %files ldap
 %defattr(-,root,root,-)
-%{_libdir}/libNGLdap*.so.%{sope_libversion}*
+%{_libdir}/libNGLdap*.so.%{version}*
 
 %files ldap-tools
 %defattr(-,root,root,-)
@@ -555,9 +568,9 @@ fi
 
 %files ical
 %defattr(-,root,root,-)
-%{_libdir}/libNGiCal*.so.%{sope_libversion}*
-%{_datadir}/sope-%{sope_libversion}/saxmappings/NGiCal.xmap
-%{_libdir}/sope-%{sope_libversion}/saxdrivers/versitSaxDriver.sax
+%{_libdir}/libNGiCal*.so.%{version}*
+%{_datadir}/%{name}-%{version}/saxmappings/NGiCal.xmap
+%{_libdir}/%{name}-%{version}/saxdrivers/versitSaxDriver.sax
 
 %files ical-devel
 %defattr(-,root,root,-)
@@ -568,20 +581,20 @@ fi
 %defattr(-,root,root,-)
 %{_bindir}/connect-EOAdaptor
 %{_bindir}/load-EOAdaptor
-%{_libdir}/libGDLAccess*.so.%{sope_libversion}*
-%{_libdir}/libGDLContentStore*.so.%{sope_libversion}*
+%{_libdir}/libGDLAccess*.so.%{version}*
+%{_libdir}/libGDLContentStore*.so.%{version}*
 
 %files gdl1-postgresql
 %defattr(-,root,root,-)
-%{_libdir}/sope-%{sope_libversion}/dbadaptors/PostgreSQL.gdladaptor
+%{_libdir}/%{name}-%{version}/dbadaptors/PostgreSQL.gdladaptor
 
 #%files gdl1-mysql
 #%defattr(-,root,root,-)
-#%{_libdir}/sope-%{sope_libversion}/dbadaptors/MySQL.gdladaptor
+#%{_libdir}/%{name}-%{version}/dbadaptors/MySQL.gdladaptor
 
 #%files gdl1-sqlite3
 #%defattr(-,root,root,-)
-#%{_libdir}/sope-%{sope_libversion}/dbadaptors/SQLite3.gdladaptor
+#%{_libdir}/%{name}-%{version}/dbadaptors/SQLite3.gdladaptor
 
 %files gdl1-tools
 %defattr(-,root,root,-)
