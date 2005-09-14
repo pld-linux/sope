@@ -581,79 +581,88 @@ fi
 %postun	gdl1 -p /sbin/ldconfig
 
 %files xml
-%defattr(-,root,root,-)
-%{_libdir}/libDOM*.so.%{version}*
-%{_libdir}/libSaxObjC*.so.%{version}*
-%{_libdir}/libXmlRpc*.so.%{version}*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libDOM*.so.%{version}*
+%attr(755,root,root) %{_libdir}/libSaxObjC*.so.%{version}*
+%attr(755,root,root) %{_libdir}/libXmlRpc*.so.%{version}*
+%dir %{_libdir}/%{name}-%{version}/saxdrivers
 %{_libdir}/%{name}-%{version}/saxdrivers/libxmlSAXDriver.sax
 %{_libdir}/%{name}-%{version}/saxdrivers/STXSaxDriver.sax
 
 %files xml-tools
-%defattr(-,root,root,-)
-%{_bindir}/domxml
-%{_bindir}/saxxml
-%{_bindir}/xmln
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/domxml
+%attr(755,root,root) %{_bindir}/saxxml
+%attr(755,root,root) %{_bindir}/xmln
 
 %files xml-devel
-%defattr(-,root,root,-)
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libDOM*.so
+%attr(755,root,root) %{_libdir}/libSaxObjC*.so
+%attr(755,root,root) %{_libdir}/libXmlRpc*.so
 %{_includedir}/DOM
 %{_includedir}/SaxObjC
 %{_includedir}/XmlRpc
-%{_libdir}/libDOM*.so
-%{_libdir}/libSaxObjC*.so
-%{_libdir}/libXmlRpc*.so
 
 %files core
-%defattr(-,root,root,-)
-%{_libdir}/libEOControl*.so.%{version}*
-%{_libdir}/libNGExtensions*.so.%{version}*
-%{_libdir}/libNGStreams*.so.%{version}*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libEOControl*.so.%{version}*
+%attr(755,root,root) %{_libdir}/libNGExtensions*.so.%{version}*
+%attr(755,root,root) %{_libdir}/libNGStreams*.so.%{version}*
 
 %files core-devel
-%defattr(-,root,root,-)
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libEOControl*.so
+%attr(755,root,root) %{_libdir}/libNGExtensions*.so
+%attr(755,root,root) %{_libdir}/libNGStreams*.so
 %{_includedir}/EOControl
 %{_includedir}/NGExtensions
 %{_includedir}/NGStreams
-%{_libdir}/libEOControl*.so
-%{_libdir}/libNGExtensions*.so
-%{_libdir}/libNGStreams*.so
 
 %files mime
-%defattr(-,root,root,-)
-%{_libdir}/libNGMime*.so.%{version}*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libNGMime*.so.%{version}*
 
 %files mime-devel
-%defattr(-,root,root,-)
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libNGMime*.so
 %{_includedir}/NGImap4
 %{_includedir}/NGMail
 %{_includedir}/NGMime
-%{_libdir}/libNGMime*.so
 
 %files appserver
-%defattr(-,root,root,-)
-%{_libdir}/libNGObjWeb*.so.%{version}*
-%{_libdir}/libNGXmlRpc*.so.%{version}*
-%{_libdir}/libSoOFS*.so.%{version}*
-%{_libdir}/libWEExtensions*.so.%{version}*
-%{_libdir}/libWOExtensions*.so.%{version}*
-%{_libdir}/libWOXML*.so.%{version}*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libNGObjWeb*.so.%{version}*
+%attr(755,root,root) %{_libdir}/libNGXmlRpc*.so.%{version}*
+%attr(755,root,root) %{_libdir}/libSoOFS*.so.%{version}*
+%attr(755,root,root) %{_libdir}/libWEExtensions*.so.%{version}*
+%attr(755,root,root) %{_libdir}/libWOExtensions*.so.%{version}*
+%attr(755,root,root) %{_libdir}/libWOXML*.so.%{version}*
+%dir %{_datadir}/%{name}-%{version}/ngobjweb
 %{_datadir}/%{name}-%{version}/ngobjweb/DAVPropMap.plist
 %{_datadir}/%{name}-%{version}/ngobjweb/Defaults.plist
 %{_datadir}/%{name}-%{version}/ngobjweb/Languages.plist
+%dir %{_libdir}/%{name}-%{version}/products
 %{_libdir}/%{name}-%{version}/products/SoCore.sxp
 %{_libdir}/%{name}-%{version}/products/SoOFS.sxp
+%dir %{_libdir}/%{name}-%{version}/wox-builders
 %{_libdir}/%{name}-%{version}/wox-builders/WEExtensions.wox
 %{_libdir}/%{name}-%{version}/wox-builders/WOExtensions.wox
 
-
 %files appserver-tools
-%defattr(-,root,root,-)
-%{_sbindir}/%{name}-%{version}
-%{_bindir}/xmlrpc_call
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_sbindir}/%{name}-%{version}
+%attr(755,root,root) %{_bindir}/xmlrpc_call
 
 %files appserver-devel
-%defattr(-,root,root,-)
-%{_bindir}/wod
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/wod
+%attr(755,root,root) %{_libdir}/libNGObjWeb*.so
+%attr(755,root,root) %{_libdir}/libNGXmlRpc*.so
+%attr(755,root,root) %{_libdir}/libSoOFS*.so
+%attr(755,root,root) %{_libdir}/libWEExtensions*.so
+%attr(755,root,root) %{_libdir}/libWOExtensions*.so
+%attr(755,root,root) %{_libdir}/libWOXML*.so
 %{_includedir}/NGHttp
 %{_includedir}/NGObjWeb
 %{_includedir}/NGXmlRpc
@@ -661,72 +670,66 @@ fi
 %{_includedir}/WEExtensions
 %{_includedir}/WOExtensions
 %{_includedir}/WOXML
-%{_libdir}/libNGObjWeb*.so
-%{_libdir}/libNGXmlRpc*.so
-%{_libdir}/libSoOFS*.so
-%{_libdir}/libWEExtensions*.so
-%{_libdir}/libWOExtensions*.so
-%{_libdir}/libWOXML*.so
 %{prefix}/System/Library/Makefiles/Additional/ngobjweb.make
 %{prefix}/System/Library/Makefiles/woapp.make
 %{prefix}/System/Library/Makefiles/wobundle.make
 
 %files ldap
-%defattr(-,root,root,-)
-%{_libdir}/libNGLdap*.so.%{version}*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libNGLdap*.so.%{version}*
 
 %files ldap-tools
-%defattr(-,root,root,-)
-%{_bindir}/ldap2dsml
-%{_bindir}/ldapchkpwd
-%{_bindir}/ldapls
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/ldap2dsml
+%attr(755,root,root) %{_bindir}/ldapchkpwd
+%attr(755,root,root) %{_bindir}/ldapls
 
 %files ldap-devel
-%defattr(-,root,root,-)
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libNGLdap*.so
 %{_includedir}/NGLdap
-%{_libdir}/libNGLdap*.so
 
 %files ical
-%defattr(-,root,root,-)
-%{_libdir}/libNGiCal*.so.%{version}*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libNGiCal*.so.%{version}*
 %{_datadir}/%{name}-%{version}/saxmappings/NGiCal.xmap
 %{_libdir}/%{name}-%{version}/saxdrivers/versitSaxDriver.sax
 
 %files ical-devel
-%defattr(-,root,root,-)
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libNGiCal*.so
 %{_includedir}/NGiCal
-%{_libdir}/libNGiCal*.so
 
 %files gdl1
-%defattr(-,root,root,-)
-%{_bindir}/connect-EOAdaptor
-%{_bindir}/load-EOAdaptor
-%{_libdir}/libGDLAccess*.so.%{version}*
-%{_libdir}/libGDLContentStore*.so.%{version}*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/connect-EOAdaptor
+%attr(755,root,root) %{_bindir}/load-EOAdaptor
+%attr(755,root,root) %{_libdir}/libGDLAccess*.so.%{version}*
+%attr(755,root,root) %{_libdir}/libGDLContentStore*.so.%{version}*
 
 %files gdl1-postgresql
-%defattr(-,root,root,-)
-%{_libdir}/%{name}-%{version}/dbadaptors/PostgreSQL.gdladaptor
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/%{name}-%{version}/dbadaptors/PostgreSQL.gdladaptor
 
 #%files gdl1-mysql
-#%defattr(-,root,root,-)
-#%{_libdir}/%{name}-%{version}/dbadaptors/MySQL.gdladaptor
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_libdir}/%{name}-%{version}/dbadaptors/MySQL.gdladaptor
 
 #%files gdl1-sqlite3
-#%defattr(-,root,root,-)
-#%{_libdir}/%{name}-%{version}/dbadaptors/SQLite3.gdladaptor
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_libdir}/%{name}-%{version}/dbadaptors/SQLite3.gdladaptor
 
 %files gdl1-tools
-%defattr(-,root,root,-)
-%{_bindir}/gcs_cat
-%{_bindir}/gcs_gensql
-%{_bindir}/gcs_ls
-%{_bindir}/gcs_mkdir
-%{_bindir}/gcs_recreatequick
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/gcs_cat
+%attr(755,root,root) %{_bindir}/gcs_gensql
+%attr(755,root,root) %{_bindir}/gcs_ls
+%attr(755,root,root) %{_bindir}/gcs_mkdir
+%attr(755,root,root) %{_bindir}/gcs_recreatequick
 
 %files gdl1-devel
-%defattr(-,root,root,-)
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libGDLAccess*.so
+%attr(755,root,root) %{_libdir}/libGDLContentStore*.so
 %{_includedir}/GDLAccess
 %{_includedir}/GDLContentStore
-%{_libdir}/libGDLAccess*.so
-%{_libdir}/libGDLContentStore*.so
