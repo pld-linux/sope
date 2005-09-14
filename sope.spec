@@ -51,7 +51,7 @@ Requires:	openldap >= 2.2.10
 #Requires:	postgresql >= 7.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define         prefix         %{_libdir}/GNUstep-libFoundation
+%define		prefix		%{_libdir}/GNUstep-libFoundation
 
 %define		libcombo	gnu-fd-nil
 %define		gsos		linux-gnu
