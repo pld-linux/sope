@@ -243,6 +243,7 @@ Requires(post,postun):	/sbin/ldconfig
 Requires:	%{name}-xml = %{version}-%{release}
 Requires:	%{name}-core = %{version}-%{release}
 Requires:	%{name}-mime = %{version}-%{release}
+Requires:	glibc >= 6:2.3.5-7.6
 # should be autodetected
 #Requires:	libfoundation
 
@@ -540,27 +541,14 @@ rm -rf $RPM_BUILD_ROOT
 	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{prefix}/System \
 	INSTALL_ROOT_DIR=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT/etc/ld.so.conf.d
+echo '%{prefix}/lib' > $RPM_BUILD_ROOT/etc/ld.so.conf.d/%{name}-appserver.conf
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post appserver
-if [ "$1" = "1" ]; then
-	if [ -d %{_sysconfdir}/ld.so.conf.d ]; then
-		echo "%{prefix}/lib" > %{_sysconfdir}/ld.so.conf.d/sope%{sope_major_version}%{sope_minor_version}.conf
-	elif [ ! "`grep '%{prefix}/lib' %{_sysconfdir}/ld.so.conf`" ]; then
-		echo "%{prefix}/lib" >> %{_sysconfdir}/ld.so.conf
-	fi
-	/sbin/ldconfig
-fi
-
-# ****************************** postun *********************************
-%postun appserver
-if [ "$1" = "0" ]; then
-	if [ -e %{_sysconfdir}/ld.so.conf.d/sope%{sope_major_version}%{sope_minor_version}.conf ]; then
-		rm -f %{_sysconfdir}/ld.so.conf.d/sope%{sope_major_version}%{sope_minor_version}.conf
-	fi
-	/sbin/ldconfig
-fi
+%post	appserver -p /sbin/ldconfig
+%postun	appserver -p /sbin/ldconfig
 
 %post	xml -p /sbin/ldconfig
 %postun	xml -p /sbin/ldconfig
@@ -632,6 +620,7 @@ fi
 
 %files appserver
 %defattr(644,root,root,755)
+%verify(not md5 mtime size) /etc/ld.so.conf.d/%{name}-appserver.conf
 %attr(755,root,root) %{_libdir}/libNGObjWeb*.so.%{version}*
 %attr(755,root,root) %{_libdir}/libNGXmlRpc*.so.%{version}*
 %attr(755,root,root) %{_libdir}/libSoOFS*.so.%{version}*
