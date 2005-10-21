@@ -620,7 +620,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files appserver
 %defattr(644,root,root,755)
-%verify(not md5 mtime size) /etc/ld.so.conf.d/%{name}-appserver.conf
+/etc/ld.so.conf.d/%{name}-appserver.conf
 %attr(755,root,root) %{_libdir}/libNGObjWeb*.so.%{version}*
 %attr(755,root,root) %{_libdir}/libNGXmlRpc*.so.%{version}*
 %attr(755,root,root) %{_libdir}/libSoOFS*.so.%{version}*
