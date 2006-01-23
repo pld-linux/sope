@@ -3,20 +3,20 @@
 # - cleanup
 # - bconds on DB backends
 # - R and BRs
-%define		trunkdate	200509061700
+%define		trunkdate	200601231100
 %define		sope_makeflags	-w -s debug=yes strip=no
-%define		versionalpha	r1101
+%define		versionalpha	r1203
 
 Summary:	SKYRiX Object Publishing Environment
 Summary(pl):	SKYRiX Object Publishing Environment - ¶rodowisko do publikowania obiektów
 Name:		sope
 Version:	4.5
-Release:	0.3
+Release:	0.4
 Vendor:		http://www.opengroupware.org/
 License:	GPL
 Group:		Libraries
 Source0:	http://download.opengroupware.org/nightly/sources/trunk/%{name}-trunk-%{versionalpha}-%{trunkdate}.tar.gz
-# Source0-md5:	2ee4dd3826cac5f8d44017af2462dfb3
+# Source0-md5:	c7b249efd88686d695f7815f8036db76
 URL:		http://www.opengroupware.org/
 BuildRequires:	STLport-devel >= 4.6.2
 BuildRequires:	apache-devel >= 2.0.50
