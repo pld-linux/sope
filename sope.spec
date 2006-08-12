@@ -133,9 +133,9 @@ Requires:	%{name}-xml = %{version}-%{release}
 %description xml-tools
 This package contains some tools:
 
-- saxxml    - parse a file using SAX and print out the XML
-- xmln      - convert a given file to PYX using a SAX handler
-- domxml    - parse a file into a DOM and print out the XML
+- saxxml - parse a file using SAX and print out the XML
+- xmln   - convert a given file to PYX using a SAX handler
+- domxml - parse a file into a DOM and print out the XML
 
 SOPE is a framework for developing web applications and services. The
 name "SOPE" (SKYRiX Object Publishing Environment) is inspired by
@@ -144,9 +144,9 @@ ZOPE.
 %description xml-tools
 Ten pakiet zawiera nastêpuj±ce narzêdzia:
 
-- saxxml    - przetwarzanie pliku przy u¿yciu SAX i wypisywanie XML-a
-- xmln      - zamiana podanego pliku na PYX przy u¿yciu handlera SAX
-- domxml    - przetwarzanie pliku na DOM i wypisywanie XML-a
+- saxxml - przetwarzanie pliku przy u¿yciu SAX i wypisywanie XML-a
+- xmln   - zamiana podanego pliku na PYX przy u¿yciu handlera SAX
+- domxml - przetwarzanie pliku na DOM i wypisywanie XML-a
 
 SOPE to szkielet do tworzenia aplikacji i us³ug WWW. Nazwa "SOPE"
 (SKYRiX Object Publishing Environment) jest zainspirowana ZOPE.
@@ -186,7 +186,7 @@ Group:		Development/Libraries
 
 %description core-devel
 This package contains the header files for the SOPE core
-libraries,  which are part of the SOPE application server framework.
+libraries, which are part of the SOPE application server framework.
 
 %description core-devel -l pl
 Ten pakiet zawiera pliki nag³ówkowe dla podstawowych bibliotek SOPE,
@@ -361,10 +361,10 @@ Requires:	%{name}-ldap = %{version}-%{release}
 %description ldap-tools
 This package contains some tools:
 
-- ldap2dsml   - return the output of an LDAP server as DSML
-                (Directory Service Markup Language)
-- ldapchkpwd  - checks whether a login/password combo would be authenticated
-- ldapls      - an 'ls' for LDAP directories
+- ldap2dsml  - return the output of an LDAP server as DSML
+               (Directory Service Markup Language)
+- ldapchkpwd - checks whether a login/password combo would be authenticated
+- ldapls     - an 'ls' for LDAP directories
 
 SOPE is a framework for developing web applications and services. The
 name "SOPE" (SKYRiX Object Publishing Environment) is inspired by
@@ -373,12 +373,12 @@ ZOPE.
 %description ldap-tools -l pl
 Ten pakiet zawiera nastêpuj±ce narzêdzia:
 
-- ldap2dsml   - zwracanie wyj¶cia serwera LDAP jako DSML
-                (Directory Service Markup Language - jêzyk znakowania
-                 us³ug katalogowych)
-- ldapchkpwd  - sprawdzanie, czy po³±czenie login/has³o jest poprawnie
-                uwierzytelniane
-- ldapls      - 'ls' dla katalogów LDAP
+- ldap2dsml  - zwracanie wyj¶cia serwera LDAP jako DSML
+               (Directory Service Markup Language - jêzyk znakowania
+               us³ug katalogowych)
+- ldapchkpwd - sprawdzanie, czy po³±czenie login/has³o jest poprawnie
+               uwierzytelniane
+- ldapls     - 'ls' dla katalogów LDAP
 
 SOPE to szkielet do tworzenia aplikacji i us³ug WWW. Nazwa "SOPE"
 (SKYRiX Object Publishing Environment) jest zainspirowana ZOPE.
