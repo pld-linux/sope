@@ -18,7 +18,7 @@ Group:		Libraries
 Source0:	http://download.opengroupware.org/nightly/sources/trunk/%{name}-trunk-%{versionalpha}-%{trunkdate}.tar.gz
 # Source0-md5:	c7b249efd88686d695f7815f8036db76
 URL:		http://www.opengroupware.org/
-BuildRequires:	STLport-devel >= 4.6.2
+BuildRequires:	STLport-devel >= 2:4.6.2
 BuildRequires:	apache-devel >= 2.0.50
 BuildRequires:	autoconf
 BuildRequires:	automake
