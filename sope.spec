@@ -141,7 +141,7 @@ SOPE is a framework for developing web applications and services. The
 name "SOPE" (SKYRiX Object Publishing Environment) is inspired by
 ZOPE.
 
-%description xml-tools
+%description xml-tools -l pl
 Ten pakiet zawiera nastêpuj±ce narzêdzia:
 
 - saxxml - przetwarzanie pliku przy u¿yciu SAX i wypisywanie XML-a
