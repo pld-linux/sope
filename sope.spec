@@ -8,7 +8,7 @@
 %define		versionalpha	r1203
 
 Summary:	SKYRiX Object Publishing Environment
-Summary(pl.UTF-8):   SKYRiX Object Publishing Environment - środowisko do publikowania obiektów
+Summary(pl.UTF-8):	SKYRiX Object Publishing Environment - środowisko do publikowania obiektów
 Name:		sope
 Version:	4.5
 Release:	0.4
@@ -86,7 +86,7 @@ samego serwera aplikacji.
 
 %package xml
 Summary:	SOPE libraries for XML processing
-Summary(pl.UTF-8):   Biblioteki SOPE do przetwarzania XML
+Summary(pl.UTF-8):	Biblioteki SOPE do przetwarzania XML
 Group:		Libraries
 
 %description xml
@@ -112,7 +112,7 @@ SOPE to szkielet do tworzenia aplikacji i usług WWW. Nazwa "SOPE"
 
 %package xml-devel
 Summary:	Development files for the SOPE XML libraries
-Summary(pl.UTF-8):   Pliki programistyczne dla bibliotek SOPE XML
+Summary(pl.UTF-8):	Pliki programistyczne dla bibliotek SOPE XML
 Group:		Development/Libraries
 Requires:	%{name}-xml = %{version}-%{release}
 Requires:	libxml2-devel
@@ -126,7 +126,7 @@ Ten pakiet zawiera pliki programistyczne dla bibliotek SOPE XML.
 
 %package xml-tools
 Summary:	Tools (domxml/saxxml/xmln)
-Summary(pl.UTF-8):   Narzędzia (domxml/saxxml/xmln)
+Summary(pl.UTF-8):	Narzędzia (domxml/saxxml/xmln)
 Group:		Development/Tools
 Requires:	%{name}-xml = %{version}-%{release}
 
@@ -153,7 +153,7 @@ SOPE to szkielet do tworzenia aplikacji i usług WWW. Nazwa "SOPE"
 
 %package core
 Summary:	Core libraries of the SOPE application server
-Summary(pl.UTF-8):   Podstawowe biblioteki serwera aplikacji SOPE
+Summary(pl.UTF-8):	Podstawowe biblioteki serwera aplikacji SOPE
 Group:		Libraries
 Requires:	%{name}-xml = %{version}-%{release}
 # should be autodetected
@@ -180,7 +180,7 @@ SOPE to szkielet do tworzenia aplikacji i usług WWW. Nazwa "SOPE"
 
 %package core-devel
 Summary:	Development files for the SOPE core libraries
-Summary(pl.UTF-8):   Pliki programistyczne dla podstawowych bibliotek SOPE
+Summary(pl.UTF-8):	Pliki programistyczne dla podstawowych bibliotek SOPE
 Group:		Development/Libraries
 #Requires:	ogo-gnustep_make
 
@@ -194,7 +194,7 @@ będących częścią szkieletu serwera aplikacji SOPE.
 
 %package mime
 Summary:	SOPE libraries for MIME processing
-Summary(pl.UTF-8):   Biblioteki SOPE do przetwarzania MIME
+Summary(pl.UTF-8):	Biblioteki SOPE do przetwarzania MIME
 Group:		Libraries
 Requires:	%{name}-core = %{version}-%{release}
 Requires:	%{name}-xml = %{version}-%{release}
@@ -224,7 +224,7 @@ SOPE to szkielet do tworzenia aplikacji i usług WWW. Nazwa "SOPE"
 
 %package mime-devel
 Summary:	Development files for the SOPE MIME libraries
-Summary(pl.UTF-8):   Pliki programistyczne dla bibliotek SOPE MIME
+Summary(pl.UTF-8):	Pliki programistyczne dla bibliotek SOPE MIME
 Group:		Development/Libraries
 #Requires:	ogo-gnustep_make
 
@@ -237,7 +237,7 @@ Ten pakiet zawiera pliki programistyczne dla bibliotek SOPE MIME.
 
 %package appserver
 Summary:	SOPE application server libraries
-Summary(pl.UTF-8):   Biblioteki serwera aplikacji SOPE
+Summary(pl.UTF-8):	Biblioteki serwera aplikacji SOPE
 Group:		Libraries
 Requires(post,postun):	/sbin/ldconfig
 Requires:	%{name}-xml = %{version}-%{release}
@@ -278,7 +278,7 @@ SOPE to szkielet do tworzenia aplikacji i usług WWW. Nazwa "SOPE"
 
 %package appserver-devel
 Summary:	Development files for the SOPE application server libraries
-Summary(pl.UTF-8):   Pliki programistyczne dla bibliotek serwera aplikacji SOPE
+Summary(pl.UTF-8):	Pliki programistyczne dla bibliotek serwera aplikacji SOPE
 Group:		Development/Libraries
 Requires:	%{name}-appserver = %{version}-%{release}
 #Requires:	ogo-gnustep_make
@@ -293,7 +293,7 @@ aplikacji SOPE.
 
 %package appserver-tools
 Summary:	Tools shipped with the SOPE application server
-Summary(pl.UTF-8):   Narzędzia dostarczane z serwerem aplikacji SOPE
+Summary(pl.UTF-8):	Narzędzia dostarczane z serwerem aplikacji SOPE
 Group:		Development/Toole
 Requires:	%{name}-appserver = %{version}-%{release}
 
@@ -316,7 +316,7 @@ SOPE to szkielet do tworzenia aplikacji i usług WWW. Nazwa "SOPE"
 
 %package ldap
 Summary:	SOPE libraries for LDAP access
-Summary(pl.UTF-8):   Biblioteki SOPE do dostępu do LDAP
+Summary(pl.UTF-8):	Biblioteki SOPE do dostępu do LDAP
 Group:		Libraries
 Requires:	%{name}-core = %{version}-%{release}
 Requires:	%{name}-xml = %{version}-%{release}
@@ -340,7 +340,7 @@ SOPE to szkielet do tworzenia aplikacji i usług WWW. Nazwa "SOPE"
 
 %package ldap-devel
 Summary:	Development files for the SOPE LDAP libraries
-Summary(pl.UTF-8):   Pliki programistyczne dla bibliotek SOPE LDAP
+Summary(pl.UTF-8):	Pliki programistyczne dla bibliotek SOPE LDAP
 Group:		Development/Libraries
 Requires:	%{name}-ldap = %{version}-%{release}
 #Requires:	ogo-gnustep_make
@@ -354,7 +354,7 @@ Ten pakiet zawiera pliki programistyczne dla bibliotek SOPE LDAP.
 
 %package ldap-tools
 Summary:	Tools (ldap2dsml/ldapchkpwd/ldapls)
-Summary(pl.UTF-8):   Narzędzia (ldap2dsml/ldapchkpwd/ldapls)
+Summary(pl.UTF-8):	Narzędzia (ldap2dsml/ldapchkpwd/ldapls)
 Group:		Development/Tools
 Requires:	%{name}-ldap = %{version}-%{release}
 
@@ -385,7 +385,7 @@ SOPE to szkielet do tworzenia aplikacji i usług WWW. Nazwa "SOPE"
 
 %package ical
 Summary:	SOPE libraries for iCal handling
-Summary(pl.UTF-8):   Biblioteki SOPE do obsługi iCal
+Summary(pl.UTF-8):	Biblioteki SOPE do obsługi iCal
 Group:		Libraries
 Requires:	%{name}-xml = %{version}-%{release}
 Requires:	%{name}-core = %{version}-%{release}
@@ -409,7 +409,7 @@ SOPE to szkielet do tworzenia aplikacji i usług WWW. Nazwa "SOPE"
 
 %package ical-devel
 Summary:	Development files for the SOPE iCal libraries
-Summary(pl.UTF-8):   Pliki programistyczne dla bibliotek SOPE iCal
+Summary(pl.UTF-8):	Pliki programistyczne dla bibliotek SOPE iCal
 Group:		Development/Libraries
 Requires:	%{name}-ical = %{version}-%{release}
 #Requires:	ogo-gnustep_make
@@ -423,7 +423,7 @@ Ten pakiet zawiera pliki programistyczne dla bibliotek SOPE iCal.
 
 %package gdl1
 Summary:	GNUstep database libraries for SOPE
-Summary(pl.UTF-8):   Biblioteki GNUstepa do baz danych dla SOPE
+Summary(pl.UTF-8):	Biblioteki GNUstepa do baz danych dla SOPE
 Group:		Libraries
 Requires:	%{name}-core = %{version}-%{release}
 Requires:	%{name}-xml = %{version}-%{release}
@@ -447,7 +447,7 @@ SOPE to szkielet do tworzenia aplikacji i usług WWW. Nazwa "SOPE"
 
 %package gdl1-postgresql
 Summary:	PostgreSQL connector for SOPE's fork of the GNUstep database environment
-Summary(pl.UTF-8):   Moduł PostgreSQL dla odgałęzienia SOPE środowiska baz danych GNUstepa
+Summary(pl.UTF-8):	Moduł PostgreSQL dla odgałęzienia SOPE środowiska baz danych GNUstepa
 Group:		Libraries
 Requires:	%{name}-gdl1 = %{version}-%{release}
 # local database?
@@ -463,7 +463,7 @@ baz danych GNUstepa.
 
 %package gdl1-mysql
 Summary:	MySQL connector for SOPE's fork of the GNUstep database environment
-Summary(pl.UTF-8):   Moduł MySQL dla odgałęzienia SOPE środowiska baz danych GNUstepa
+Summary(pl.UTF-8):	Moduł MySQL dla odgałęzienia SOPE środowiska baz danych GNUstepa
 Group:		Libraries
 Requires:	%{name}-gdl1 = %{version}-%{release}
 
@@ -491,7 +491,7 @@ danych GNUstepa.
 
 %package gdl1-tools
 Summary:	Tools (gcs_cat/gcs_gensql/gcs_ls/gcs_mkdir/gcs_recreatequick)
-Summary(pl.UTF-8):   Narzędzia (gcs_cat/gcs_gensql/gcs_ls/gcs_mkdir/gcs_recreatequick)
+Summary(pl.UTF-8):	Narzędzia (gcs_cat/gcs_gensql/gcs_ls/gcs_mkdir/gcs_recreatequick)
 Group:		Development/Tools
 Requires:	%{name}-gdl1 = %{version}-%{release}
 
@@ -503,7 +503,7 @@ Różne narzędzia dla GDLContentStore.
 
 %package gdl1-devel
 Summary:	Development files for the GNUstep database libraries
-Summary(pl.UTF-8):   Pliki programistyczne dla bibliotek do baz danych GNUstepa
+Summary(pl.UTF-8):	Pliki programistyczne dla bibliotek do baz danych GNUstepa
 Group:		Development/Libraries
 Requires:	%{name}-gdl1 = %{version}-%{release}
 #Requires:	ogo-gnustep_make
