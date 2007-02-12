@@ -8,7 +8,7 @@
 %define		versionalpha	r1203
 
 Summary:	SKYRiX Object Publishing Environment
-Summary(pl):	SKYRiX Object Publishing Environment - ¶rodowisko do publikowania obiektów
+Summary(pl.UTF-8):   SKYRiX Object Publishing Environment - Å›rodowisko do publikowania obiektÃ³w
 Name:		sope
 Version:	4.5
 Release:	0.4
@@ -73,20 +73,20 @@ The individual frameworks of the package can be used standalone (for
 example in Cocoa applications) and do not require the application
 server itself.
 
-%description -l pl
-Pakiet SOPE to obszerny zestaw szkieletów (16 szkieletów, ~1500 klas)
-tworz±cych kompletne ¶rodowisko serwera aplikacji WWW. Oprócz serwera
+%description -l pl.UTF-8
+Pakiet SOPE to obszerny zestaw szkieletÃ³w (16 szkieletÃ³w, ~1500 klas)
+tworzÄ…cych kompletne Å›rodowisko serwera aplikacji WWW. OprÃ³cz serwera
 aplikacji zgodnego z Apple WebObjects rozszerzonego przez idee Zope
-zawiera du¿y zbiór klas wielokrotnego u¿ycia do: przetwarzania XML
-(SAX2, DOM, XML-RPC), przetwarzania MIME/IMAP4, ³±czno¶ci z LDAP,
-³±czno¶ci z serwerami relacyjnych baz danych oraz przetwarzania
-formatu iCalendar. Poszczególne szkielety z tego pakietu mog± byæ
-u¿ywane samodzielnie (na przyk³ad w aplikacjach Cocoa) i nie wymagaj±
+zawiera duÅ¼y zbiÃ³r klas wielokrotnego uÅ¼ycia do: przetwarzania XML
+(SAX2, DOM, XML-RPC), przetwarzania MIME/IMAP4, Å‚Ä…cznoÅ›ci z LDAP,
+Å‚Ä…cznoÅ›ci z serwerami relacyjnych baz danych oraz przetwarzania
+formatu iCalendar. PoszczegÃ³lne szkielety z tego pakietu mogÄ… byÄ‡
+uÅ¼ywane samodzielnie (na przykÅ‚ad w aplikacjach Cocoa) i nie wymagajÄ…
 samego serwera aplikacji.
 
 %package xml
 Summary:	SOPE libraries for XML processing
-Summary(pl):	Biblioteki SOPE do przetwarzania XML
+Summary(pl.UTF-8):   Biblioteki SOPE do przetwarzania XML
 Group:		Libraries
 
 %description xml
@@ -100,19 +100,19 @@ SOPE is a framework for developing web applications and services. The
 name "SOPE" (SKYRiX Object Publishing Environment) is inspired by
 ZOPE.
 
-%description xml -l pl
-Biblioteki SOPE do przetwarzania XML zawieraj±:
+%description xml -l pl.UTF-8
+Biblioteki SOPE do przetwarzania XML zawierajÄ…:
 
-- implementacjê SAX2 dla Objective C
-- próbê implementacji DOM w oparciu o SaxObjC
-- implementacjê XML-RPC (bez warstwy transportowej)
+- implementacjÄ™ SAX2 dla Objective C
+- prÃ³bÄ™ implementacji DOM w oparciu o SaxObjC
+- implementacjÄ™ XML-RPC (bez warstwy transportowej)
 
-SOPE to szkielet do tworzenia aplikacji i us³ug WWW. Nazwa "SOPE"
+SOPE to szkielet do tworzenia aplikacji i usÅ‚ug WWW. Nazwa "SOPE"
 (SKYRiX Object Publishing Environment) jest zainspirowana ZOPE.
 
 %package xml-devel
 Summary:	Development files for the SOPE XML libraries
-Summary(pl):	Pliki programistyczne dla bibliotek SOPE XML
+Summary(pl.UTF-8):   Pliki programistyczne dla bibliotek SOPE XML
 Group:		Development/Libraries
 Requires:	%{name}-xml = %{version}-%{release}
 Requires:	libxml2-devel
@@ -121,12 +121,12 @@ Requires:	libxml2-devel
 %description xml-devel
 This package contains the development files of the SOPE XML libraries.
 
-%description xml-devel -l pl
+%description xml-devel -l pl.UTF-8
 Ten pakiet zawiera pliki programistyczne dla bibliotek SOPE XML.
 
 %package xml-tools
 Summary:	Tools (domxml/saxxml/xmln)
-Summary(pl):	Narzêdzia (domxml/saxxml/xmln)
+Summary(pl.UTF-8):   NarzÄ™dzia (domxml/saxxml/xmln)
 Group:		Development/Tools
 Requires:	%{name}-xml = %{version}-%{release}
 
@@ -141,19 +141,19 @@ SOPE is a framework for developing web applications and services. The
 name "SOPE" (SKYRiX Object Publishing Environment) is inspired by
 ZOPE.
 
-%description xml-tools -l pl
-Ten pakiet zawiera nastêpuj±ce narzêdzia:
+%description xml-tools -l pl.UTF-8
+Ten pakiet zawiera nastÄ™pujÄ…ce narzÄ™dzia:
 
-- saxxml - przetwarzanie pliku przy u¿yciu SAX i wypisywanie XML-a
-- xmln   - zamiana podanego pliku na PYX przy u¿yciu handlera SAX
+- saxxml - przetwarzanie pliku przy uÅ¼yciu SAX i wypisywanie XML-a
+- xmln   - zamiana podanego pliku na PYX przy uÅ¼yciu handlera SAX
 - domxml - przetwarzanie pliku na DOM i wypisywanie XML-a
 
-SOPE to szkielet do tworzenia aplikacji i us³ug WWW. Nazwa "SOPE"
+SOPE to szkielet do tworzenia aplikacji i usÅ‚ug WWW. Nazwa "SOPE"
 (SKYRiX Object Publishing Environment) jest zainspirowana ZOPE.
 
 %package core
 Summary:	Core libraries of the SOPE application server
-Summary(pl):	Podstawowe biblioteki serwera aplikacji SOPE
+Summary(pl.UTF-8):   Podstawowe biblioteki serwera aplikacji SOPE
 Group:		Libraries
 Requires:	%{name}-xml = %{version}-%{release}
 # should be autodetected
@@ -169,18 +169,18 @@ SOPE is a framework for developing web applications and services. The
 name "SOPE" (SKYRiX Object Publishing Environment) is inspired by
 ZOPE.
 
-%description core -l pl
-Podstawowe biblioteki SOPE zawieraj±:
+%description core -l pl.UTF-8
+Podstawowe biblioteki SOPE zawierajÄ…:
 
-- ró¿ne rozszerzenia Foundation
-- bibliotekê strumieni i gniazd podobn± do java.io
+- rÃ³Å¼ne rozszerzenia Foundation
+- bibliotekÄ™ strumieni i gniazd podobnÄ… do java.io
 
-SOPE to szkielet do tworzenia aplikacji i us³ug WWW. Nazwa "SOPE"
+SOPE to szkielet do tworzenia aplikacji i usÅ‚ug WWW. Nazwa "SOPE"
 (SKYRiX Object Publishing Environment) jest zainspirowana ZOPE.
 
 %package core-devel
 Summary:	Development files for the SOPE core libraries
-Summary(pl):	Pliki programistyczne dla podstawowych bibliotek SOPE
+Summary(pl.UTF-8):   Pliki programistyczne dla podstawowych bibliotek SOPE
 Group:		Development/Libraries
 #Requires:	ogo-gnustep_make
 
@@ -188,13 +188,13 @@ Group:		Development/Libraries
 This package contains the header files for the SOPE core
 libraries, which are part of the SOPE application server framework.
 
-%description core-devel -l pl
-Ten pakiet zawiera pliki nag³ówkowe dla podstawowych bibliotek SOPE,
-bêd±cych czê¶ci± szkieletu serwera aplikacji SOPE.
+%description core-devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagÅ‚Ã³wkowe dla podstawowych bibliotek SOPE,
+bÄ™dÄ…cych czÄ™Å›ciÄ… szkieletu serwera aplikacji SOPE.
 
 %package mime
 Summary:	SOPE libraries for MIME processing
-Summary(pl):	Biblioteki SOPE do przetwarzania MIME
+Summary(pl.UTF-8):   Biblioteki SOPE do przetwarzania MIME
 Group:		Libraries
 Requires:	%{name}-core = %{version}-%{release}
 Requires:	%{name}-xml = %{version}-%{release}
@@ -212,19 +212,19 @@ SOPE is a framework for developing web applications and services. The
 name "SOPE" (SKYRiX Object Publishing Environment) is inspired by
 ZOPE.
 
-%description mime -l pl
-Biblioteki SOPE do przetwarzania MIME zawieraj±:
+%description mime -l pl.UTF-8
+Biblioteki SOPE do przetwarzania MIME zawierajÄ…:
 
 - klasy do przetwarzania jednostek MIME
-- pe³n± implementacjê IMAP4
+- peÅ‚nÄ… implementacjÄ™ IMAP4
 - prototypowy procesor POP3 i SMTP
 
-SOPE to szkielet do tworzenia aplikacji i us³ug WWW. Nazwa "SOPE"
+SOPE to szkielet do tworzenia aplikacji i usÅ‚ug WWW. Nazwa "SOPE"
 (SKYRiX Object Publishing Environment) jest zainspirowana ZOPE.
 
 %package mime-devel
 Summary:	Development files for the SOPE MIME libraries
-Summary(pl):	Pliki programistyczne dla bibliotek SOPE MIME
+Summary(pl.UTF-8):   Pliki programistyczne dla bibliotek SOPE MIME
 Group:		Development/Libraries
 #Requires:	ogo-gnustep_make
 
@@ -232,12 +232,12 @@ Group:		Development/Libraries
 This package contains the development files of the SOPE MIME
 libraries.
 
-%description mime-devel -l pl
+%description mime-devel -l pl.UTF-8
 Ten pakiet zawiera pliki programistyczne dla bibliotek SOPE MIME.
 
 %package appserver
 Summary:	SOPE application server libraries
-Summary(pl):	Biblioteki serwera aplikacji SOPE
+Summary(pl.UTF-8):   Biblioteki serwera aplikacji SOPE
 Group:		Libraries
 Requires(post,postun):	/sbin/ldconfig
 Requires:	%{name}-xml = %{version}-%{release}
@@ -262,23 +262,23 @@ SOPE is a framework for developing web applications and services. The
 name "SOPE" (SKYRiX Object Publishing Environment) is inspired by
 ZOPE.
 
-%description appserver -l pl
-Biblioteki serwera aplikacji SOPE udostêpniaj±:
+%description appserver -l pl.UTF-8
+Biblioteki serwera aplikacji SOPE udostÄ™pniajÄ…:
 
-- silnik renderuj±cy szablony i wiele elementów dynamicznych
+- silnik renderujÄ…cy szablony i wiele elementÃ³w dynamicznych
 - klienta/serwer HTTP
 - klienta XML-RPC
 - szkielet serwera WebDAV
-- zarz±dzanie sesjami
+- zarzÄ…dzanie sesjami
 - rozszerzenia skryptowe dla Foundation oraz pomost dla JavaScriptu
-- bibliotekê renderuj±c± drzewa DOM
+- bibliotekÄ™ renderujÄ…cÄ… drzewa DOM
 
-SOPE to szkielet do tworzenia aplikacji i us³ug WWW. Nazwa "SOPE"
+SOPE to szkielet do tworzenia aplikacji i usÅ‚ug WWW. Nazwa "SOPE"
 (SKYRiX Object Publishing Environment) jest zainspirowana ZOPE.
 
 %package appserver-devel
 Summary:	Development files for the SOPE application server libraries
-Summary(pl):	Pliki programistyczne dla bibliotek serwera aplikacji SOPE
+Summary(pl.UTF-8):   Pliki programistyczne dla bibliotek serwera aplikacji SOPE
 Group:		Development/Libraries
 Requires:	%{name}-appserver = %{version}-%{release}
 #Requires:	ogo-gnustep_make
@@ -287,13 +287,13 @@ Requires:	%{name}-appserver = %{version}-%{release}
 This package contains the development files for the SOPE application
 server libraries.
 
-%description appserver-devel -l pl
+%description appserver-devel -l pl.UTF-8
 Ten pakiet zawiera pliki programistyczne dla bibliotek serwera
 aplikacji SOPE.
 
 %package appserver-tools
 Summary:	Tools shipped with the SOPE application server
-Summary(pl):	Narzêdzia dostarczane z serwerem aplikacji SOPE
+Summary(pl.UTF-8):   NarzÄ™dzia dostarczane z serwerem aplikacji SOPE
 Group:		Development/Toole
 Requires:	%{name}-appserver = %{version}-%{release}
 
@@ -306,17 +306,17 @@ SOPE is a framework for developing web applications and services. The
 name "SOPE" (SKYRiX Object Publishing Environment) is inspired by
 ZOPE.
 
-%description appserver-tools -l pl
-Ten pakiet zawiera narzêdzia dostarczane ze szkieletem serwera
-aplikacji SOPE, przydatne g³ównie do rozwijania i ¶ledzenia aplikacji
+%description appserver-tools -l pl.UTF-8
+Ten pakiet zawiera narzÄ™dzia dostarczane ze szkieletem serwera
+aplikacji SOPE, przydatne gÅ‚Ã³wnie do rozwijania i Å›ledzenia aplikacji
 SOPE.
 
-SOPE to szkielet do tworzenia aplikacji i us³ug WWW. Nazwa "SOPE"
+SOPE to szkielet do tworzenia aplikacji i usÅ‚ug WWW. Nazwa "SOPE"
 (SKYRiX Object Publishing Environment) jest zainspirowana ZOPE.
 
 %package ldap
 Summary:	SOPE libraries for LDAP access
-Summary(pl):	Biblioteki SOPE do dostêpu do LDAP
+Summary(pl.UTF-8):   Biblioteki SOPE do dostÄ™pu do LDAP
 Group:		Libraries
 Requires:	%{name}-core = %{version}-%{release}
 Requires:	%{name}-xml = %{version}-%{release}
@@ -331,16 +331,16 @@ SOPE is a framework for developing web applications and services. The
 name "SOPE" (SKYRiX Object Publishing Environment) is inspired by
 ZOPE.
 
-%description ldap -l pl
-Biblioteki SOPE do dostêpu do LDAP zawieraj± wrapper Objective-C dla
-us³ug katalogowych LDAP.
+%description ldap -l pl.UTF-8
+Biblioteki SOPE do dostÄ™pu do LDAP zawierajÄ… wrapper Objective-C dla
+usÅ‚ug katalogowych LDAP.
 
-SOPE to szkielet do tworzenia aplikacji i us³ug WWW. Nazwa "SOPE"
+SOPE to szkielet do tworzenia aplikacji i usÅ‚ug WWW. Nazwa "SOPE"
 (SKYRiX Object Publishing Environment) jest zainspirowana ZOPE.
 
 %package ldap-devel
 Summary:	Development files for the SOPE LDAP libraries
-Summary(pl):	Pliki programistyczne dla bibliotek SOPE LDAP
+Summary(pl.UTF-8):   Pliki programistyczne dla bibliotek SOPE LDAP
 Group:		Development/Libraries
 Requires:	%{name}-ldap = %{version}-%{release}
 #Requires:	ogo-gnustep_make
@@ -349,12 +349,12 @@ Requires:	%{name}-ldap = %{version}-%{release}
 This package contains the development files of the SOPE LDAP
 libraries.
 
-%description ldap-devel -l pl
+%description ldap-devel -l pl.UTF-8
 Ten pakiet zawiera pliki programistyczne dla bibliotek SOPE LDAP.
 
 %package ldap-tools
 Summary:	Tools (ldap2dsml/ldapchkpwd/ldapls)
-Summary(pl):	Narzêdzia (ldap2dsml/ldapchkpwd/ldapls)
+Summary(pl.UTF-8):   NarzÄ™dzia (ldap2dsml/ldapchkpwd/ldapls)
 Group:		Development/Tools
 Requires:	%{name}-ldap = %{version}-%{release}
 
@@ -370,22 +370,22 @@ SOPE is a framework for developing web applications and services. The
 name "SOPE" (SKYRiX Object Publishing Environment) is inspired by
 ZOPE.
 
-%description ldap-tools -l pl
-Ten pakiet zawiera nastêpuj±ce narzêdzia:
+%description ldap-tools -l pl.UTF-8
+Ten pakiet zawiera nastÄ™pujÄ…ce narzÄ™dzia:
 
-- ldap2dsml  - zwracanie wyj¶cia serwera LDAP jako DSML
-               (Directory Service Markup Language - jêzyk znakowania
-               us³ug katalogowych)
-- ldapchkpwd - sprawdzanie, czy po³±czenie login/has³o jest poprawnie
+- ldap2dsml  - zwracanie wyjÅ›cia serwera LDAP jako DSML
+               (Directory Service Markup Language - jÄ™zyk znakowania
+               usÅ‚ug katalogowych)
+- ldapchkpwd - sprawdzanie, czy poÅ‚Ä…czenie login/hasÅ‚o jest poprawnie
                uwierzytelniane
-- ldapls     - 'ls' dla katalogów LDAP
+- ldapls     - 'ls' dla katalogÃ³w LDAP
 
-SOPE to szkielet do tworzenia aplikacji i us³ug WWW. Nazwa "SOPE"
+SOPE to szkielet do tworzenia aplikacji i usÅ‚ug WWW. Nazwa "SOPE"
 (SKYRiX Object Publishing Environment) jest zainspirowana ZOPE.
 
 %package ical
 Summary:	SOPE libraries for iCal handling
-Summary(pl):	Biblioteki SOPE do obs³ugi iCal
+Summary(pl.UTF-8):   Biblioteki SOPE do obsÅ‚ugi iCal
 Group:		Libraries
 Requires:	%{name}-xml = %{version}-%{release}
 Requires:	%{name}-core = %{version}-%{release}
@@ -400,16 +400,16 @@ SOPE is a framework for developing web applications and services. The
 name "SOPE" (SKYRiX Object Publishing Environment) is inspired by
 ZOPE.
 
-%description ical -l pl
-Biblioteki SOPE do obs³ugi iCal zawieraj± klasy dla obiektów iCalendar
+%description ical -l pl.UTF-8
+Biblioteki SOPE do obsÅ‚ugi iCal zawierajÄ… klasy dla obiektÃ³w iCalendar
 i vCard.
 
-SOPE to szkielet do tworzenia aplikacji i us³ug WWW. Nazwa "SOPE"
+SOPE to szkielet do tworzenia aplikacji i usÅ‚ug WWW. Nazwa "SOPE"
 (SKYRiX Object Publishing Environment) jest zainspirowana ZOPE.
 
 %package ical-devel
 Summary:	Development files for the SOPE iCal libraries
-Summary(pl):	Pliki programistyczne dla bibliotek SOPE iCal
+Summary(pl.UTF-8):   Pliki programistyczne dla bibliotek SOPE iCal
 Group:		Development/Libraries
 Requires:	%{name}-ical = %{version}-%{release}
 #Requires:	ogo-gnustep_make
@@ -418,12 +418,12 @@ Requires:	%{name}-ical = %{version}-%{release}
 This package contains the development files of the SOPE iCal
 libraries.
 
-%description ical-devel -l pl
+%description ical-devel -l pl.UTF-8
 Ten pakiet zawiera pliki programistyczne dla bibliotek SOPE iCal.
 
 %package gdl1
 Summary:	GNUstep database libraries for SOPE
-Summary(pl):	Biblioteki GNUstepa do baz danych dla SOPE
+Summary(pl.UTF-8):   Biblioteki GNUstepa do baz danych dla SOPE
 Group:		Libraries
 Requires:	%{name}-core = %{version}-%{release}
 Requires:	%{name}-xml = %{version}-%{release}
@@ -438,16 +438,16 @@ SOPE is a framework for developing web applications and services. The
 name "SOPE" (SKYRiX Object Publishing Environment) is inspired by
 ZOPE.
 
-%description gdl1 -l pl
-Ten pakiet zawiera odga³êzienie bibliotek GNUstepa do baz danych
-u¿ywane przez serwer aplikacji SOPE (wraz z GDLContentStore).
+%description gdl1 -l pl.UTF-8
+Ten pakiet zawiera odgaÅ‚Ä™zienie bibliotek GNUstepa do baz danych
+uÅ¼ywane przez serwer aplikacji SOPE (wraz z GDLContentStore).
 
-SOPE to szkielet do tworzenia aplikacji i us³ug WWW. Nazwa "SOPE"
+SOPE to szkielet do tworzenia aplikacji i usÅ‚ug WWW. Nazwa "SOPE"
 (SKYRiX Object Publishing Environment) jest zainspirowana ZOPE.
 
 %package gdl1-postgresql
 Summary:	PostgreSQL connector for SOPE's fork of the GNUstep database environment
-Summary(pl):	Modu³ PostgreSQL dla odga³êzienia SOPE ¶rodowiska baz danych GNUstepa
+Summary(pl.UTF-8):   ModuÅ‚ PostgreSQL dla odgaÅ‚Ä™zienia SOPE Å›rodowiska baz danych GNUstepa
 Group:		Libraries
 Requires:	%{name}-gdl1 = %{version}-%{release}
 # local database?
@@ -457,13 +457,13 @@ Requires:	postgresql
 This package contains the PostgreSQL connector for SOPE's fork of the
 GNUstep database libraries.
 
-%description gdl1-postgresql -l pl
-Ten pakiet zawiera modu³ PostgreSQL dla odga³êzienia SOPE bibliotek do
+%description gdl1-postgresql -l pl.UTF-8
+Ten pakiet zawiera moduÅ‚ PostgreSQL dla odgaÅ‚Ä™zienia SOPE bibliotek do
 baz danych GNUstepa.
 
 %package gdl1-mysql
 Summary:	MySQL connector for SOPE's fork of the GNUstep database environment
-Summary(pl):	Modu³ MySQL dla odga³êzienia SOPE ¶rodowiska baz danych GNUstepa
+Summary(pl.UTF-8):   ModuÅ‚ MySQL dla odgaÅ‚Ä™zienia SOPE Å›rodowiska baz danych GNUstepa
 Group:		Libraries
 Requires:	%{name}-gdl1 = %{version}-%{release}
 
@@ -471,13 +471,13 @@ Requires:	%{name}-gdl1 = %{version}-%{release}
 This package contains the MySQL connector for SOPE's fork of the
 GNUstep database libraries.
 
-%description gdl1-mysql -l pl
-Ten pakiet zawiera modu³ MySQL dla odga³êzienia SOPE bibliotek do baz
+%description gdl1-mysql -l pl.UTF-8
+Ten pakiet zawiera moduÅ‚ MySQL dla odgaÅ‚Ä™zienia SOPE bibliotek do baz
 danych GNUstepa.
 
 #%package gdl1-sqlite3
 #Summary:	SQLite3 connector for SOPE's fork of the GNUstep database environment
-#Summary(pl):	Modu³ SQLite3 dla odga³êzienia SOPE ¶rodowiska baz danych GNUstepa
+#Summary(pl):	ModuÅ‚ SQLite3 dla odgaÅ‚Ä™zienia SOPE Å›rodowiska baz danych GNUstepa
 #Group:		Libraries
 #Requires:	%{name}-gdl1 = %{version}-%{release}
 #
@@ -486,24 +486,24 @@ danych GNUstepa.
 #GNUstep database libraries.
 #
 #%description gdl1-sqlite3 -l pl
-#Ten pakiet zawiera modu³ SQLite3 dla odga³êzienia SOPE bibliotek do baz
+#Ten pakiet zawiera moduÅ‚ SQLite3 dla odgaÅ‚Ä™zienia SOPE bibliotek do baz
 #danych GNUstepa.
 
 %package gdl1-tools
 Summary:	Tools (gcs_cat/gcs_gensql/gcs_ls/gcs_mkdir/gcs_recreatequick)
-Summary(pl):	Narzêdzia (gcs_cat/gcs_gensql/gcs_ls/gcs_mkdir/gcs_recreatequick)
+Summary(pl.UTF-8):   NarzÄ™dzia (gcs_cat/gcs_gensql/gcs_ls/gcs_mkdir/gcs_recreatequick)
 Group:		Development/Tools
 Requires:	%{name}-gdl1 = %{version}-%{release}
 
 %description gdl1-tools
 Various tools around the GDLContentStore.
 
-%description gdl1-tools -l pl
-Ró¿ne narzêdzia dla GDLContentStore.
+%description gdl1-tools -l pl.UTF-8
+RÃ³Å¼ne narzÄ™dzia dla GDLContentStore.
 
 %package gdl1-devel
 Summary:	Development files for the GNUstep database libraries
-Summary(pl):	Pliki programistyczne dla bibliotek do baz danych GNUstepa
+Summary(pl.UTF-8):   Pliki programistyczne dla bibliotek do baz danych GNUstepa
 Group:		Development/Libraries
 Requires:	%{name}-gdl1 = %{version}-%{release}
 #Requires:	ogo-gnustep_make
@@ -513,9 +513,9 @@ Requires:	postgresql-devel
 This package contains the header files for SOPE's fork of the GNUstep
 database libraries (including GDLContentStore).
 
-%description gdl1-devel -l pl
-Ten pakiet zawiera pliki nag³ówkowe dla odga³êzienia SOPE bibliotek do
-baz danych GNUstepa (w³±cznie z GDLContentStore).
+%description gdl1-devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagÅ‚Ã³wkowe dla odgaÅ‚Ä™zienia SOPE bibliotek do
+baz danych GNUstepa (wÅ‚Ä…cznie z GDLContentStore).
 
 %prep
 %setup -q -n %{name}
