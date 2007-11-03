@@ -37,7 +37,7 @@ BuildRequires:	libical
 BuildRequires:	libstdc++-devel >= 3.3.45
 BuildRequires:	libtool >= 1.5.10
 BuildRequires:	libxml >= 1.8.17
-BuildRequires:	openldap-devel >= 2.2.17
+BuildRequires:	openldap-devel >= 2.4.6
 BuildRequires:	openssl-devel >= 0.9.7
 BuildRequires:	postgresql-devel >= 7.4.0
 #Requires:	apache >= 2.0.50
@@ -46,7 +46,7 @@ Requires:	libical-sope
 Requires:	libobjc
 #Requires:	libobjc-lf2
 Requires:	libxml2 >= 2.6.14
-Requires:	openldap >= 2.2.10
+Requires:	openldap >= 2.4.6
 # does it really require local database?
 #Requires:	postgresql >= 7.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
