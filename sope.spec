@@ -27,7 +27,7 @@ BuildRequires:	bison
 BuildRequires:	cyrus-sasl-devel >= 2.1.18
 BuildRequires:	expat-devel >= 1.95.7
 BuildRequires:	flex
-BuildRequires:	gettext-devel >= 0.14.1
+BuildRequires:	gettext-tools >= 0.14.1
 BuildRequires:	glibc-devel >= 6:2.3.4
 BuildRequires:	gnustep-base-devel >= 1.10.0
 BuildRequires:	libffi-devel >= 3.3.5
